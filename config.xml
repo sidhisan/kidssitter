@@ -2,10 +2,10 @@
 <widget id="com.kidssitter.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>kidssitter</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+       Trouver un(e) Baby-Sitter devient un jeu d'enfant 
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        Acumensoft
     </author>
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.5.0" />
