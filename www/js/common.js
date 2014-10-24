@@ -18,16 +18,19 @@
 		$('.logout').click(function(){
 			logout();
 		});
+		
+		
 	});
 
 //logout function-----------------------------------------
 function logout()
 {
 	$.mobile.showPageLoadingMsg();
-	localStorage.clear();
+	window.localStorage.clear();
 	$('.logout').css('display','none');
 	facebookConnectPlugin.logout();
 	$.mobile.hidePageLoadingMsg();
+	$('#password').val('');
 	$.mobile.changePage('#home',{transition:'flip'});
 }
 	
@@ -100,7 +103,7 @@ detailsAttribute: "data-geo"})
 	  
 	  //planning table
 	  
-	$('#fiche').find('td:not(.left-border)').click(function()
+	$('#fiche,#fiche-edit-planning').find('td:not(.left-border)').click(function()
 	{
 		var dat=$(this).find('div > input[type=checkbox]').attr('checked');
 		if(dat=="checked")
@@ -131,6 +134,7 @@ function onDeviceReady() {
 		{
 			$('#home-cgu').text('');
 			$('#home-cgu').text('C.G.U. Kidssitter');
+			$('#near-kid li:not(:first)').remove();
 			var list=[];
 			list=JSON.parse(window.localStorage['user_listing_data']);
 				if(list != null)
@@ -194,7 +198,7 @@ function onDeviceReady() {
 					$('#kgeo').trigger('geocode');
 					//alert("geoloc");
 				}else{
-					$("#kgeo").css("display","block");
+					
 					//alert("no geoloc");
 				}
 				$.mobile.hidePageLoadingMsg();
@@ -204,6 +208,7 @@ function onDeviceReady() {
 		{
 			$('#home-cgu').text('');
 			$('#home-cgu').text('C.G.U. Parent');
+			$('#near-parent li:not(:first)').remove();
 			var list=[];
 			list=JSON.parse(window.localStorage['user_listing_data']);
 			if(list != null)
@@ -376,12 +381,15 @@ function login_check()
 					window.localStorage['user_listing_data']=JSON.stringify(data.result_arr);
 					window.localStorage['address']=data.user_lat;
 					window.localStorage['userdata']=JSON.stringify(data.user_data);
+					window.localStorage['planning']=JSON.stringify(data.user_data['planning']);
+					//alert(window.localStorage['planning']);
 					$('input:checkbox[name="planning[]"]:checked').each(function() 
 					{
 						$(this).attr('checked',false);
 					});
 					if(data.type=="user_sitter")
 					{
+						$('#near-kid li:not(:first)').remove();
 						if(data.result_arr != null)
 						{
 							var j=0;
@@ -419,7 +427,7 @@ function login_check()
 								
 								if(value.lname != null)
 								{
-									var lname=value.lname;
+									var lname=value.lname.substring(0,1)+".";
 								}
 								else
 								{
@@ -436,20 +444,16 @@ function login_check()
 							var htmls='<li class="result"><h4  style="text-align:center">No Result Found.</h4></li>';
 							$("#near-kid").html(htmls);
 						}
-						if(data.user_lat != "")
-						{
+						
 							$("#kgeo").geocomplete("find",data.user_lat);
 							$('#kgeo').trigger('geocode');
 							//alert("geoloc");
-						}else{
-							$("#kgeo").css("display","block");
-							//alert("no geoloc");
-						}
 						$.mobile.hidePageLoadingMsg();
 						$.mobile.changePage("#listing-parents",{transition:"flip"});
 						}
 						else
 						{
+							$('#near-parent li:not(:first)').remove();
 							if(data.result_arr != null)
 							{
 								var j=0;
@@ -511,7 +515,7 @@ function login_check()
 								}
 								j++;
 								
-								var htmls='<li class="result"><a href="#"><img src="./images/certifie-listing.png" alt="" width="70" height="70" class="float certi" style="'+certified+'"><img src="./images/valide-listing.png" alt="" width="70" height="70" class="float valid" style="'+valid+'">'+value.src+'<h1>'+value.fname+' '+lname+'. ('+value.age+' ans)</h1><strong>'+type+' '+value.locality+'</strong><div class="avis"><span class="rating r'+value.rating+'"></span><b>'+rate+'</b></div><div class="distance"><img src="./images/distance-listing.png" height="30" alt=""><br/>'+value.distance+' KM</div><input type="hidden" id="sitter-distance-'+value.id+'" value="'+value.distance+'"><div class="arrow"><img src="./images/arrow-listing.png" height="20" alt="" onclick="get_profile_details('+value.id+',\'sitter\')"></div></a></li>';
+								var htmls='<li class="result"><a href="#"><img src="./images/certifie-listing.png" alt="" width="70" height="70" class="float certi" style="'+certified+'"><img src="./images/valide-listing.png" alt="" width="70" height="70" class="float valid" style="'+valid+'">'+value.src+'<h1>'+value.fname+' '+lname+' ('+value.age+' ans)</h1><strong>'+type+' '+value.locality+'</strong><div class="avis"><span class="rating r'+value.rating+'"></span><b>'+rate+'</b></div><div class="distance"><img src="./images/distance-listing.png" height="30" alt=""><br/>'+value.distance+' KM</div><input type="hidden" id="sitter-distance-'+value.id+'" value="'+value.distance+'"><div class="arrow"><img src="./images/arrow-listing.png" height="20" alt="" onclick="get_profile_details('+value.id+',\'sitter\')"></div></a></li>';
 									$("#near-parent").append(htmls);
 									
 								});
@@ -520,15 +524,9 @@ function login_check()
 								var htmls='<li class="result"><h4  style="text-align:center">No Result Found.</h4></li>';
 								$("#near-parent").html(htmls);
 							}
-							if(data.user_lat != "")
-							{
+							
 								$("#pgeo").geocomplete("find",data.user_lat);
 								$('#pgeo').trigger('geocode');
-								//alert("geoloc");
-							}else{
-								$("#pgeo").css("display","block");
-								//alert("no geoloc");
-							}
 							$.mobile.hidePageLoadingMsg();
 							$.mobile.changePage("#listing-kid",{transition:"flip"});
 						}
@@ -923,7 +921,7 @@ function offeres_nav()
 						window.localStorage['address']=addr;
 						if(data.result != null)
 						{
-							//alert('1');
+							
 							var j=0;
 							$.each(data.result,function(index,value){
 							var certified,valid;
@@ -1512,7 +1510,7 @@ function onBackKeyDown(e) {
 
 //profile page related common functions----------------------------------------------------------------------
 
-function view_profile()
+function view_profile() //profile-navigation
 {
 	if(window.localStorage['user_type'] == 'user_parent')
 	{
@@ -1524,6 +1522,57 @@ function view_profile()
 	}
 }
 
+function edit_planning() //edit-planning
+{
+	$.mobile.showPageLoadingMsg();
+	var pdata=[];
+	$('input:checkbox[name="e_planning[]"]:checked').each(function() 
+	{
+	   pdata.push($(this).val());
+	});
+	var user=JSON.parse(window.localStorage['userdata']);
+	$.ajax({
+				type: "POST",
+				url: "http://codeuridea.net/kidssitter/edit-planning/"+user.id,
+				data:{'planning':pdata},
+				dataType: "json",
+				success: function(data)
+				{
+					
+					window.localStorage['planning']=JSON.stringify(data.plan);
+					$.mobile.hidePageLoadingMsg();
+					if(window.localStorage['user_type'] != 'user_sitter')
+					{
+						$.mobile.changePage('#fiche-parents',{transition:'flip'});
+					}
+					else
+					{
+						$.mobile.changePage('#fiche-kid',{transition:'flip'});
+					}
+					view_planning();
+				}
+			});
+}
+
+function view_planning()
+{
+	
+	$('#fiche-edit-planning').find('input:checkbox[name="e_planning[]"]:checked').each(function() 
+	{
+		$(this).attr('checked',false);
+	});
+	$('#fiche-edit-planning').find('td').removeClass('check');
+	var plan=[];
+	plan=JSON.parse(window.localStorage['planning']);
+	//alert(plan);
+	for(i=0;i<plan.length;i++)
+	{
+		$('#fiche-edit-planning').find('#e_planning_'+plan[i]).attr('checked',true);
+		$('#fiche-edit-planning').find('#e_planning_'+plan[i]).parent('div').parent('td').addClass('check');
+	}
+	
+	
+}
 //My Profile Page (Parent)-----------------------------------------------------------------------------------------
 
 function view_my_profile_parent()
@@ -1601,10 +1650,22 @@ function view_my_profile_parent()
 		var htmls='<img src="'+userdetails.src+'" height="80" alt=""><h1>'+userdetails.firstname+' '+lname+'<strong> '+type+''+userdetails.locality+'</strong></h1><p>'+kids+'<br/>'+phone+'<br/>'+window.localStorage['username']+'<br/>'+skype+'</p>';
 		$('#fiche-parents .user').html('');
 		$('#fiche-parents .user').html(htmls);
+		$('#fiche-edit-planning').find('input:checkbox[name="e_planning[]"]:checked').each(function() 
+	{
+		$(this).attr('checked',false);
+	});
+	$('#fiche-edit-planning').find('td').removeClass('check');
+	var plan=[];
+	plan=JSON.parse(window.localStorage['planning']);
+	//alert(plan);
+	for(i=0;i<plan.length;i++)
+	{
+		$('#fiche-edit-planning').find('#e_planning_'+plan[i]).attr('checked',true);
+		$('#fiche-edit-planning').find('#e_planning_'+plan[i]).parent('td').addClass('check');
+	}
+		
 		$('#fiche-parents').find('.subscription_status').html(premium);
-		$.mobile.changePage('#fiche-parents',{transition:'flip'});
-		
-		
+		$.mobile.changePage('#fiche-parents',{transition:'flip'});	
 	
 }
 
@@ -1676,7 +1737,22 @@ function view_my_profile_sitter()
 	var htmls='<img src="'+userdetails.src+'" height="80" alt=""><h1>'+userdetails.firstname+' '+lname+'<strong> '+type+''+userdetails.locality+'</strong></h1><p>'+kids+'<br/>'+phone+'<br/>'+window.localStorage['username']+'<br/>'+skype+'</p>';
 	$('#fiche-kid .user').html('');
 	$('#fiche-kid .user').html(htmls);
+	$('#fiche-edit-planning').find('input:checkbox[name="e_planning[]"]:checked').each(function() 
+	{
+		$(this).attr('checked',false);
+	});
+	$('#fiche-edit-planning').find('td').removeClass('check');
+	var plan=[];
+	plan=JSON.parse(window.localStorage['planning']);
+	//alert(plan);
+	for(i=0;i<plan.length;i++)
+	{
+		$('#fiche-edit-planning').find('#e_planning_'+plan[i]).attr('checked',true);
+		$('#fiche-edit-planning').find('#e_planning_'+plan[i]).parent('td').addClass('check');
+	}
+	
 	$('#fiche-kid').find('.subscription_status').html(certified);
 	$.mobile.changePage('#fiche-kid',{transition:'flip'});
 }
+
 

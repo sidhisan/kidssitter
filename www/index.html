@@ -379,7 +379,7 @@
 				</li>
 			</ul>
 			<h1>Renseignez les horaires des disponibilit&eacute;s</h1>
-			<a href="#" data-role="button" onclick="$.mobile.changePage('#fiche',{transition:'flip'})"><i class="fa fa-calendar"></i> Disponibilit&eacute;s <i class="fa fa-chevron-right"></i></a>
+			<a href="#" data-role="button" onclick="$.mobile.changePage('#fiche',{transition:'flip'});"><i class="fa fa-calendar"></i> Disponibilit&eacute;s <i class="fa fa-chevron-right"></i></a>
 			<h1>Informations compl&eacute;mentaires</h1>
 			<div data-role="collapsible">
 				<h3>Type de garde :</h3>
@@ -992,7 +992,7 @@
 		<ul class="links">
 			<li><a href="#"><i class="fa fa-envelope"></i> Messages <i class="fa fa-angle-right"></i></a></li>
 			<li><a href="#"><i class="fa fa-comment"></i> Mon annonce <i class="fa fa-angle-right"></i></a></li>
-			<li><a href="#"><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
+			<li><a href="#" onClick='$.mobile.changePage("#fiche-edit-planning",{transition:"flip"})'><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
 			<li><a href="#"><i class="fa fa-clock-o"></i> Lancer une garde d'urgence <i class="fa fa-angle-right"></i></a></li>
 		</ul>
 	</div>
@@ -1035,17 +1035,6 @@
 	
 		<div data-role="content">
 			<div class="user">
-				<!--<img src="images/maquette/pic1.png" height="80" alt="">
-				<h1>
-					Stéphanie M.
-					<strong>Dieppe - 76550</strong>
-				</h1>
-				<p>
-					3 enfants - Agé de 6 à 9 ans<br/>
-					06 50 41 04 27<br/>
-					Mika@plusqueduweb.com<br/>
-					Skype : mickael.olland
-				</p>-->
 			</div>
 			<h1 class="title">
 				<i class="fa fa-list-alt"></i> Statut de mon abonnement :  <span class="subscription_status">Gratuit</span>
@@ -1061,7 +1050,7 @@
 			<ul class="links">
 				<li><a href="#"><i class="fa fa-envelope"></i> Messages <i class="fa fa-angle-right"></i></a></li>
 				<li><a href="#"><i class="fa fa-comment"></i> Mon annonce <i class="fa fa-angle-right"></i></a></li>
-				<li><a href="#"><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="#" onClick='$.mobile.changePage("#fiche-edit-planning",{transition:"flip"})'><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
 				<li><a href="#"><i class="fa fa-clock-o"></i> Lancer une garde d'urgence <i class="fa fa-angle-right"></i></a></li>
 			</ul>
 		</div>
@@ -1093,6 +1082,136 @@
 	
 	</div>
 <!-- Profile Page Sitter End -->
+
+<!-- edit planning table for parent and sitter start -->
+<div data-role="page" id="fiche-edit-planning" class="sitter">
+  <div data-role="header" data-theme="c">
+    <h1><img src="./images/logo.png" alt="Kidssitter" height="13"> Tableau des disponibilit&eacute;s</h1>
+    <a href="#nav-panel" class="jqm-navmenu-link main-menu-link"  data-icon="bars" data-iconpos="notext">Menu</a> <a href="#" data-role="button" data-icon="back" data-iconpos="notext" class="back-link" data-rel="back">Retour</a> </div>
+  <div data-role="content">
+    <h2 class="table-de-title">Tableau des disponibilit&eacute;s</h2>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" class="chart">
+      <tbody>
+        <tr>
+          <th width="24%" class="left-border">&nbsp;</th>
+          <th>Lun</th>
+          <th>Mar</th>
+          <th>Mer</th>
+          <th>Jeu</th>
+          <th>Ven</th>
+          <th>Sam</th>
+          <th>Dim</th>
+        </tr>
+        <tr class="odd">
+          <td class="left-border"> 7h a 9h</td>
+          <td><input id="e_planning_0" style="display:none" type="checkbox" name="e_planning[]" value="0" ></td>
+          <td><input id="e_planning_1" style="display:none" type="checkbox" name="e_planning[]" value="1" ></td>
+          <td><input id="e_planning_2" style="display:none" type="checkbox" name="e_planning[]" value="2" ></td>
+          <td><input id="e_planning_3" style="display:none" type="checkbox" name="e_planning[]" value="3" ></td>
+          <td><input id="e_planning_4" style="display:none" type="checkbox" name="e_planning[]" value="4" ></td>
+          <td><input id="e_planning_5" style="display:none" type="checkbox" name="e_planning[]" value="5" ></td>
+          <td><input id="e_planning_6" style="display:none" type="checkbox" name="e_planning[]" value="6" ></td>
+        </tr>
+        <tr>
+          <td class="left-border">9h a 12h</td>
+          <td><input id="e_planning_7" style="display:none" type="checkbox" name="e_planning[]" value="7" ></td>
+          <td><input id="e_planning_8" style="display:none" type="checkbox" name="e_planning[]" value="8" ></td>
+          <td><input id="e_planning_9" style="display:none" type="checkbox" name="e_planning[]" value="9" ></td>
+          <td><input id="e_planning_10" style="display:none" type="checkbox" name="e_planning[]" value="10" ></td>
+          <td><input id="e_planning_11" style="display:none" type="checkbox" name="e_planning[]" value="11" ></td>
+          <td><input id="e_planning_12" style="display:none" type="checkbox" name="e_planning[]" value="12" ></td>
+          <td><input id="e_planning_13" style="display:none" type="checkbox" name="e_planning[]" value="13" ></td>
+        </tr>
+        <tr class="odd">
+          <td class="left-border">12h a 14h</td>
+          <td><input id="e_planning_14" style="display:none" type="checkbox" name="e_planning[]" value="14" ></td>
+          <td><input id="e_planning_15" style="display:none" type="checkbox" name="e_planning[]" value="15" ></td>
+          <td><input id="e_planning_16" style="display:none" type="checkbox" name="e_planning[]" value="16" ></td>
+          <td><input id="e_planning_17" style="display:none" type="checkbox" name="e_planning[]" value="17" ></td>
+          <td><input id="e_planning_18" style="display:none" type="checkbox" name="e_planning[]" value="18" ></td>
+          <td><input id="e_planning_19" style="display:none" type="checkbox" name="e_planning[]" value="19" ></td>
+          <td><input id="e_planning_20" style="display:none" type="checkbox" name="e_planning[]" value="20" ></td>
+        </tr>
+        <tr class="odd">
+          <td class="left-border">14h a 16h30</td>
+          <td><input id="e_planning_21" style="display:none" type="checkbox" name="e_planning[]" value="21" ></td>
+          <td><input id="e_planning_22" style="display:none" type="checkbox" name="e_planning[]" value="22" ></td>
+          <td><input id="e_planning_23" style="display:none" type="checkbox" name="e_planning[]" value="23" ></td>
+          <td><input id="e_planning_24" style="display:none" type="checkbox" name="e_planning[]" value="24" ></td>
+          <td><input id="e_planning_25" style="display:none" type="checkbox" name="e_planning[]" value="25" ></td>
+          <td><input id="e_planning_26" style="display:none" type="checkbox" name="e_planning[]" value="26" ></td>
+          <td><input id="e_planning_27" style="display:none" type="checkbox" name="e_planning[]" value="27" ></td>
+        </tr>
+        <tr>
+          <td class="left-border">16h30 a 18h</td>
+          <td><input id="e_planning_28" style="display:none" type="checkbox" name="e_planning[]" value="28" ></td>
+          <td><input id="e_planning_29" style="display:none" type="checkbox" name="e_planning[]" value="29" ></td>
+          <td><input id="e_planning_30" style="display:none" type="checkbox" name="e_planning[]" value="30" ></td>
+          <td><input id="e_planning_31" style="display:none" type="checkbox" name="e_planning[]" value="31" ></td>
+          <td><input id="e_planning_32" style="display:none" type="checkbox" name="e_planning[]" value="32" ></td>
+          <td><input id="e_planning_33" style="display:none" type="checkbox" name="e_planning[]" value="33" ></td>
+          <td><input id="e_planning_34" style="display:none" type="checkbox" name="e_planning[]" value="34" ></td>
+        </tr>
+        <tr class="odd">
+          <td class="left-border">18h a 20h</td>
+          <td><input id="e_planning_35" style="display:none" type="checkbox" name="e_planning[]" value="35" ></td>
+          <td><input id="e_planning_36" style="display:none" type="checkbox" name="e_planning[]" value="36" ></td>
+          <td><input id="e_planning_37" style="display:none" type="checkbox" name="e_planning[]" value="37" ></td>
+          <td><input id="e_planning_38" style="display:none" type="checkbox" name="e_planning[]" value="38" ></td>
+          <td><input id="e_planning_39" style="display:none" type="checkbox" name="e_planning[]" value="39" ></td>
+          <td><input id="e_planning_40" style="display:none" type="checkbox" name="e_planning[]" value="40" ></td>
+          <td><input id="e_planning_41" style="display:none" type="checkbox" name="e_planning[]" value="41" ></td>
+        </tr>
+        <tr>
+          <td class="left-border">20h a minuit</td>
+          <td valign="middle"><input id="planning_42" style="display:none" type="checkbox" name="planning[]" value="42" ></td>
+          <td><input id="e_planning_43" style="display:none" type="checkbox" name="e_planning[]" value="43" ></td>
+          <td><input id="e_planning_44" style="display:none" type="checkbox" name="e_planning[]" value="44" ></td>
+          <td><input id="e_planning_45" style="display:none" type="checkbox" name="e_planning[]" value="45" ></td>
+          <td><input id="e_planning_46" style="display:none" type="checkbox" name="e_planning[]" value="46" ></td>
+          <td><input id="e_planning_47" style="display:none" type="checkbox" name="e_planning[]" value="47" ></td>
+          <td><input id="e_planning_48" style="display:none" type="checkbox" name="e_planning[]" value="48" ></td>
+        </tr>
+        <tr class="odd">
+          <td class="left-border">nuit</td>
+          <td valign="middle"><input id="planning_49" style="display:none" type="checkbox" name="planning[]" value="49" ></td>
+          <td><input id="e_planning_50" style="display:none" type="checkbox" name="e_planning[]" value="50" ></td>
+          <td><input id="e_planning_51" style="display:none" type="checkbox" name="e_planning[]" value="51" ></td>
+          <td><input id="e_planning_52" style="display:none" type="checkbox" name="e_planning[]" value="52" ></td>
+          <td><input id="e_planning_53" style="display:none" type="checkbox" name="e_planning[]" value="53" ></td>
+		  <td><input id="e_planning_54" style="display:none" type="checkbox" name="e_planning[]" value="54" ></td>
+          <td><input id="e_planning_55" style="display:none" type="checkbox" name="e_planning[]" value="55" ></td>
+        </tr>
+      </tbody>
+    </table>
+	
+	<a href="#" onclick="edit_planning()" data-role="button"  id="edit-planning"  >Save Planning</a>
+  </div>
+  <div class="custom-nav" >
+		<div data-role="panel" id="nav-panel" data-theme="c" data-position="left" data-display="push">
+			<ul data-role="listview" data-theme="c">
+				<li><img src="./images/mon-compte.png" class="nav-icon-img"  alt="" /><a href="#" onClick="view_profile()">Mon compte</a></li>
+				<li><img src="./images/mes-message-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Mes messages</a></li>
+				<li><img src="./images/lancer-icon.png" class="nav-icon-img" alt=""/><a href="#">Lancer une garde d'urgence</a></li>
+				<li><img src="./images/icon-fevoris.png" class="nav-icon-img"  alt=""/><a href="#">Mes favoris</a></li>
+				<li><img src="./images/pencil-icon.png" class="nav-icon-img" alt=""/><a href="#">Mon abonnement</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">Le Blog Kidssitter</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#concept-kid',transition:'flip');">Le Concept Kidssitter</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="offeres_nav()" >Offres</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#cgu-kid',{transition:'flip'});">C.G.U. Kidssitter</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
+				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
+				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
+				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
+				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+			</ul>
+ 
+		</div>
+      </div>
+</div>
+<!-- edit planning table for parent and sitter end -->
 	<!-- CMS pages start -->
 	
 <!-- CGU start -->

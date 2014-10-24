@@ -55,13 +55,14 @@ function loginReqestToServer(fb)
 				window.localStorage['user_listing_data']=JSON.stringify(data.result_arr);
 				window.localStorage['address']=data.user_lat;
 				window.localStorage['userdata']=JSON.stringify(data.user_data);
+				window.localStorage['planning']=JSON.stringify(data.user_data['planning']);
 				$('input:checkbox[name="planning[]"]:checked').each(function() 
 				{
 					$(this).attr('checked',false);
 				});
 				if(data.type=="user_sitter")
 				{
-					//alert("Sitter");
+					$('#near-kid li:not(:first)').remove();
 					if(data.result_arr != null)
 					{
 						var j=0;
@@ -132,6 +133,7 @@ function loginReqestToServer(fb)
 				}
 				else
 				{
+					$('#near-parent li:not(:first)').remove();
 					if(data.result_arr != null)
 					{
 						//alert("Parent");
@@ -144,16 +146,16 @@ function loginReqestToServer(fb)
 						}
 						else
 						{
-						certified="display:none";
+							certified="display:none";
 						}
 						
 						if(value.verified == "1")
 						{
-						valid="display:block";
+							valid="display:block";
 						}
 						else
 						{
-						valid="display:none";
+							valid="display:none";
 						}
 						
 						if(value.lname != null)
