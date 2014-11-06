@@ -8,6 +8,7 @@
 	<script src="cordova.js"></script>
 	<script src="cordova_plugins.js"></script>
 	<script  src="js/facebookConnectPlugin.js"></script>
+	<script type="text/javascript" src="js/camera.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0-beta.1/jquery.mobile-1.3.0-beta.1.min.css" />
 	<link rel="stylesheet" href="css/jquery.mobile.datepicker.css" />
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
@@ -54,11 +55,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a id="home-cgu" href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -120,11 +123,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
 				<li><img src="images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -184,11 +189,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -232,11 +239,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -287,11 +296,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Parent</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -342,11 +353,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -461,11 +474,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -544,11 +559,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -676,11 +693,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -764,11 +783,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#cgu-kid',{transition:'flip'});">. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -894,11 +915,13 @@
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt="" onClick="home_cgu_navigation();"/><a href="#">C.G.U</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-		<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+		<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 		<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 		<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 		<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-		<li class="logout"><a href="#">D&eacute;connexion</a></li>
+		<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+		<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+		<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
       </ul>
     </div>
   </div>
@@ -949,7 +972,7 @@
 			
 		</div>
 		<a href="#" data-role="button" class="gradiant-button" name="s_telephone" onclick="get_phone($(this))">Telephone</a>
-		<a href="#send_messge_sitter" data-transition="pop" data-rel="popup" data-role="button" class="gradiant-button" >Message</a>
+		<a href="#send_messge_sitter" data-rel="popup" data-transition="pop"  data-role="button" class="gradiant-button" >Message</a>
 		<div data-role="popup" id="send_messge_sitter" style="padding:10px;">
 		<h2>New Message</h2>
 			<input type="text" placeholder="subject.." id="s_m_1" name="s_m_1">
@@ -976,11 +999,13 @@
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Parent</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-		<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+		<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 		<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 		<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 		<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-		<li class="logout"><a href="#">D&eacute;connexion</a></li>
+		<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+		<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+		<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
       </ul>
     </div>
 
@@ -1020,7 +1045,7 @@
 			</li>
 		</ul>
 		<ul class="links">
-			<li><a href="#"><i class="fa fa-envelope"></i> Messages <i class="fa fa-angle-right"></i></a></li>
+			<li><a href="#" onlclick="view_message()"><i class="fa fa-envelope"></i> Messages <i class="fa fa-angle-right"></i></a></li>
 			<li><a href="#" onClick="view_annonce();"><i class="fa fa-comment"></i> Mon annonce <i class="fa fa-angle-right"></i></a></li>
 			<li><a href="#" onClick='$.mobile.changePage("#fiche-edit-planning",{transition:"flip"})'><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
 			<li><a href="#"><i class="fa fa-clock-o"></i> Lancer une garde d'urgence <i class="fa fa-angle-right"></i></a></li>
@@ -1053,11 +1078,13 @@
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidsitter</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-		<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+		<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 		<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 		<li><img src="./images/facebook.png" class="nav-icon-img"  alt="" /><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 		<li><img src="./images/twetter.png" class="nav-icon-img" alt="" /><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-		<li class="logout"><a href="#">D&eacute;connexion</a></li>
+		<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+		<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+		<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
       </ul>
 
 	</div>
@@ -1096,7 +1123,7 @@
 				</li>
 			</ul>
 			<ul class="links">
-				<li><a href="#"><i class="fa fa-envelope"></i> Messages <i class="fa fa-angle-right"></i></a></li>
+				<li><a href="#" onclick="view_message()"><i class="fa fa-envelope"></i> Messages <i class="fa fa-angle-right"></i></a></li>
 				<li><a href="#" onClick="view_annonce();"><i class="fa fa-comment"></i> Mon annonce <i class="fa fa-angle-right"></i></a></li>
 				<li><a href="#" onClick='$.mobile.changePage("#fiche-edit-planning",{transition:"flip"})'><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
 				<li><a href="#"><i class="fa fa-clock-o"></i> Lancer une garde d'urgence <i class="fa fa-angle-right"></i></a></li>
@@ -1124,11 +1151,13 @@
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onClick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 		<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-		<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+		<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 		<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 		<li><img src="./images/facebook.png" class="nav-icon-img"  alt="" /><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 		<li><img src="./images/twetter.png" class="nav-icon-img" alt="" /><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-		<li class="logout"><a href="#">D&eacute;connexion</a></li>
+		<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+		<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+		<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
       </ul>
 
 	</div>
@@ -1168,11 +1197,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Parent</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -1278,11 +1309,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Parent</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -1407,11 +1440,13 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -1446,13 +1481,13 @@
 			<div class="annonce">
 				<span id="user-annonce">
 				</span>
-				<hr>
+				<hr/>
 				<a class="btn-red edit" href="#popupAnnonce" data-rel="popup" data-transition="pop" data-role="button">Editer mon annonce</a>
 				<div data-role="popup" id="popupAnnonce" style="padding:10px;">
-				<h2>Editer mon annonce</h2>
-				<textarea cols="40" rows="16" name="edit_annonce" id="edit_annonce" resizable="false"></textarea>
-                <a href="#" class="btn-red" data-role="button" onclick="modify_annonce();">Valider</a>
-			</div>
+					<h2>Editer mon annonce</h2>
+					<textarea cols="40" rows="16" name="edit_annonce" id="edit_annonce" resizable="false"></textarea>
+	                <a href="#" class="btn-red" data-role="button" onclick="modify_annonce();">Valider</a>
+				</div>
 			</div>
 			<div class="block">
 				<h1>
@@ -1489,11 +1524,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -1542,11 +1579,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
 
 	</div>
@@ -1589,11 +1628,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2041,11 +2082,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">C.G.U. Parents</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2510,11 +2553,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2564,11 +2609,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Parent</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2617,11 +2664,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U. Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2666,11 +2715,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" >Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2737,11 +2788,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2828,11 +2881,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2874,7 +2929,7 @@ top:7px;" ">
 			</ul>
 			<div class="green-block radius">
 				<a href="#">
-					<div class="price">
+					<div class="price" onClick="gotoPurchaseOffer('Offre Premium 1 MOIS');">
 						<span>9,90&euro;</span> par mois
 					</div>
 					<div class="description">
@@ -2884,7 +2939,7 @@ top:7px;" ">
 			</div>
 			<div class="blue-block radius">
 				<a href="#">
-					<div class="price">
+					<div class="price" onClick="gotoPurchaseOffer('Offre Premium 3 MOIS');">
 						<span>6,90&euro;</span> par mois
 					</div>
 					<div class="description">
@@ -2911,11 +2966,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#"  onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#"  onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -2935,7 +2992,7 @@ top:7px;" ">
 		<div data-role="content">
 			<h1 class="title">Validation & Certification de votre profil</h1>
 			<div class="blue-block radius">
-				<a href="#">
+				<a href="#" onClick="gotoPurchaseOffer('Membre Valid&eacute; 1 AN')">
 					<div class="price">
 						<div><span>4,90&euro;</span> par an</div>
 					</div>
@@ -2971,7 +3028,7 @@ top:7px;" ">
 			</ul>
 			<div class="red-block radius">
 				<a href="#">
-					<div class="price">
+					<div class="price" onClick="gotoPurchaseOffer('Membre Certifi&eacute; 1 AN')">
 						<span>8,90&euro;</span> par an
 					</div>
 					<div class="description">
@@ -3020,11 +3077,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -3086,11 +3145,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#"  onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#"  onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -3148,11 +3209,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -3221,11 +3284,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#"  onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#"  onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -3243,68 +3308,21 @@ top:7px;" ">
 			<a href="#" data-role="button" data-icon="back" data-iconpos="notext" class="back-link" data-rel="back">Retour</a>
 		</div>
 	
-		<div data-role="content" id="message-list">
+		<div data-role="content" class="message-list">
 			<div class="containing-element">
-				<ul id="message-menu">
+				<ul class="message-menu">
 					<li><a href="#">Reçu(s)</a></li>
 					<li><a href="#">Envoyé(s)</a></li>
 					<li><a href="#">Corbeille(s)</a></li>
 				</ul>
 			</div>
 			<div class="messages" id="thread-list">
-			<!--<div class="message">
-				<div class="author">
-					<img src="images/maquette/pic1.png" height="80" alt="">
-					<h1>
-						Vincent L. (23 ans)
-						<strong>Saint Valéry en Caux - 76002</strong>
-						<small>February 20, 2014 13:35</small>
-					</h1>
-				</div>
-			</div>
-			</div>
-			<!--<div class="messages">
-				<div class="message">
-					<div class="author">
-						<img src="images/maquette/pic1.png" height="80" alt="">
-						<h1>
-							Vincent L. (23 ans)
-							<strong>Saint Valéry en Caux - 76002</strong>
-							<small>February 20, 2014 13:35</small>
-						</h1>
-					</div>
-					<div class="content">
-						<p>Bonjour, je vous contact afin de proposer mes services au tarif de 12€ de l'heure chaque mercredi.</p>
-						<p>Je peux venir vous recontrer dans la semaine pour me présenter et définir des disponibilités ensemble.</p>
-						<p>J'ai 3 ans d'experiences dans la garde d'enfants, etc...</p>
-					</div>
-				</div>
-				<div class="message sent">
-					<div class="author">
-						<img src="images/maquette/pic2.png" height="80" alt="">
-						<h1>
-							Richard O.
-							<strong>Saint Valéry en Caux - 76002</strong>
-							<small>February 20, 2014 13:55</small>
-						</h1>
-						
-					</div>
-					<div class="content">
-						<p>
-							Bonjour,<br/>
-							Merci de nous avoir contacté, je vous propose un rdv le 24 Février, voici notre adresse...
-						</p>
-					</div>
-				</div>
-			</div>-->
+
+			
+
 		</div>
 
-		<!--<div data-role="footer" data-position="fixed" class="ui-bar footer-width" data-theme="c">
-			<input type="text" name="name" id="basic" value="" data-inline="true" placeholder="Répondre"/>
-			<a href="index.html" data-role="button" data-inline="true">Envoyer</a>
-		</div>-->
-	
-		
+		</div>
         <div class="custom-nav">
 		<div data-role="panel" id="nav-panel" data-theme="c" data-position="left" data-display="push">
 			<ul data-role="listview" data-theme="c">
@@ -3319,11 +3337,13 @@ top:7px;" ">
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
-				<li><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#">Partager mon profil</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#"  onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#"  onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
  
 		</div>
@@ -3331,6 +3351,113 @@ top:7px;" ">
 	
 	</div>
 <!--message end -->
+
+
+<!--view thread start-->
+<!--Message start-->
+<div data-role="page" id="messagerie-list">
+	
+		<div data-role="header" data-theme="c">
+			<h1><img src="images/logo.png" alt="Kidssitter" height="13"> Messagerie</h1>
+			<a href="#nav-panel" class="jqm-navmenu-link main-menu-link"  data-icon="bars" data-iconpos="notext">Menu</a>
+			<a href="#" data-role="button" data-icon="back" data-iconpos="notext" class="back-link" data-rel="back">Retour</a>
+		</div>
+	
+		<div data-role="content" class="message-list">
+			
+			<div class="messages" id="thread-message-list">
+			
+		</div>
+
+		</div>
+		<div data-role="footer" data-position="fixed" class="ui-bar footer-width" data-theme="c">
+			<input type="hidden" id="thread" value="">
+			<input type="hidden" id="participant" value="">
+			<input type="hidden" id="subject" value="">
+			<input type="text" name="response" id="response" value="" data-inline="true" placeholder="Répondre"/>
+			<a href="#" onclick="send_response();" data-role="button" data-inline="true">Envoyer</a>
+		</div>
+        <div class="custom-nav">
+		<div data-role="panel" id="nav-panel" data-theme="c" data-position="left" data-display="push">
+			<ul data-role="listview" data-theme="c">
+				<li><img src="./images/mon-compte.png" class="nav-icon-img"  alt="" /><a href="#" onClick="view_profile()">Mon compte</a></li>
+				<li><img src="./images/mes-message-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="view_message()">Mes messages</a></li>
+				<li><img src="./images/lancer-icon.png" class="nav-icon-img" alt=""/><a href="#">Lancer une garde d'urgence</a></li>
+				<li><img src="./images/icon-fevoris.png" class="nav-icon-img"  alt=""/><a href="#" onclick="favourite_list()">Mes favoris</a></li>
+				<li><img src="./images/pencil-icon.png" class="nav-icon-img" alt=""/><a href="#">Mon abonnement</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">Le Blog Kidssitter</a></li>
+				<li class="home-concept" style="display:none;"><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="go_concept()"  >Le Concept Kidssitter</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="offeres_nav()" >Offres</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
+				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
+				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#"  onClick="kidssitterFbpg();">Facebook</a></li>
+				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#"  onClick="kidssittertweetpg();">Twitter</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
+			</ul>
+ 
+		</div>
+      </div>
+	</div>
+<!--message end -->
+<!--view thread end-->
+<!--- News Letter -->
+<div data-role="page" id="newsletterpp" style="padding:10px;">
+		<div data-role="header" data-theme="c">
+			<h1><img src="./images/logo.png" alt="Kidssitter" height="13"> News Letter</h1>
+            <a href="#nav-panel" class="jqm-navmenu-link main-menu-link"  data-icon="bars" data-iconpos="notext">Menu</a>
+			<a href="#" data-role="button" data-icon="back" data-iconpos="notext" class="back-link" data-rel="back">Retour</a>
+		</div>
+		<div data-role="content">
+		<span><strong>Recevez notre</strong>News Letter</span>
+		<form action="#" method="post" id="optin_add">
+			<input type="email" id="optin_email" name="optin[email]" required="required" placeholder="Votre email" />
+			<a href="#" data-role="button" id="optin_submit" class="btn-red" onClick="savenewsletter();">
+			Envoyer</a>
+			<span class="return"></span>
+		</form>
+		</div>
+		<div class="custom-nav">
+		<div data-role="panel" id="nav-panel" data-theme="c" data-position="left" data-display="push">
+			<ul data-role="listview" data-theme="c">
+				<li><img src="./images/mon-compte.png" class="nav-icon-img"  alt="" /><a href="#" onClick="view_profile()">Mon compte</a></li>
+				<li><img src="./images/mes-message-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="view_message()">Mes messages</a></li>
+				<li><img src="./images/lancer-icon.png" class="nav-icon-img" alt=""/><a href="#">Lancer une garde d'urgence</a></li>
+				<li><img src="./images/icon-fevoris.png" class="nav-icon-img"  alt=""/><a href="#" onclick="favourite_list()">Mes favoris</a></li>
+				<li><img src="./images/pencil-icon.png" class="nav-icon-img" alt=""/><a href="#">Mon abonnement</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">Le Blog Kidssitter</a></li>
+
+				<li class="home-concept" style="display:none;"><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="go_concept()"  >Le Concept Kidssitter</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="offeres_nav()" >Offres</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="home_cgu_navigation()">C.G.U.</a></li>
+
+				<li class="home-concept" style="display:none;"><img src="images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="go_concept()"  >Le Concept Kidssitter</a></li>
+				<li><img src="images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="offeres_nav()" >Offres</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a id="home-cgu" href="#" onclick="home_cgu_navigation();">C.G.U.</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
+				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
+				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
+			<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#"  onClick="kidssitterFbpg();">Facebook</a></li>
+				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#"  onClick="kidssittertweetpg();">Twitter</a></li>
+				<li class="logout"><a href="#">D&eacute;connexion</a></li>
+
+				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
+				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
+				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
+				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
+
+			</ul>
+ 
+		</div>
+      </div>
+</div>
+<!--- News Letter -->
+
 </body>
 </html>
 <script type="text/javascript">

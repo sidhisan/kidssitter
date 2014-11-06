@@ -1548,3 +1548,95 @@ td.check {
 .mesinfname{
   color:#4ba2c0 !important
 }
+
+#messagerie-list .containing-element {
+  background: #f6f5f1;
+  padding: 20px 10px;
+  text-align: center;
+  text-shadow: none;
+  font-weight: normal;
+  text-align: center;
+}
+/* line 353, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul {
+  margin: 0px;
+  padding: 0px;
+}
+/* line 357, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li {
+  display: inline-block;
+  margin-left: -5px;
+  padding: 0px;
+  border-top: 1px solid #cb4e5d;
+  border-bottom: 1px solid #cb4e5d;
+}
+/* line 365, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li:first-child {
+  border-left: 1px solid #cb4e5d;
+  border-radius: 4px 0px 0px 4px;
+}
+/* line 369, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li:last-child {
+  border-right: 1px solid #cb4e5d;
+  border-radius: 0px 4px 4px 0px;
+}
+/* line 373, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li.active a {
+  background: #cb4e5d;
+  color: #fff;
+}
+/* line 377, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #cb4e5d;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+}
+/* line 387, ../scss/kidssitter.scss */
+#messagerie-list .message {
+  background: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+/* line 391, ../scss/kidssitter.scss */
+#messagerie-list .message .author {
+  clear: both;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c9c9c9;
+}
+/* line 396, ../scss/kidssitter.scss */
+#messagerie-list .message .author h1 {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #4ba2c0 !important;
+}
+/* line 400, ../scss/kidssitter.scss */
+#messagerie-list .message .author h1 strong {
+  font-size: 13px;
+  display: block;
+  color: #000;
+  margin-bottom: 8px;
+}
+/* line 406, ../scss/kidssitter.scss */
+#messagerie-list .message .author h1 small {
+  display: block;
+  color: #414141;
+  font-weight: normal;
+  font-size: 13px;
+}
+/* line 413, ../scss/kidssitter.scss */
+#messagerie-list .message .author img {
+  float: left;
+  margin-right: 5px;
+}
+/* line 418, ../scss/kidssitter.scss */
+#messagerie-list .message .content {
+  font-size: 13px;
+}
+/* line 422, ../scss/kidssitter.scss */
+#messagerie-list .message.sent h1 {
+  color: #cb4e5d !important;
+}

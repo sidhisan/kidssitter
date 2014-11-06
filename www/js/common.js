@@ -63,16 +63,20 @@
 		}
 	});
 	
-	$('#message-menu >li:first').addClass('active');
+	$('.message-menu >li:first').addClass('active');
 	//alert($('#message-menu > li ').hasClass('active'));
-	$('#message-menu > li ').click(function(){
+	$('.message-menu > li ').click(function(){
 		if($(this).hasClass('active')==false)
 		{
-			$('#message-menu > li ').removeClass('active');
+			$('.message-menu > li ').removeClass('active');
 			$(this).addClass('active');
 			
 			view_message_list($(this).index());
 		}
+	});
+	
+	$('div').live('pageshow',function(event){
+		restrictMenuByLogin();
 	});
 
 	});
@@ -1424,6 +1428,7 @@ function getdetails()
 	}
 	else
 	{
+		
 		$('#send_messge_parent').popup('open');
 	}
 	
@@ -2439,7 +2444,7 @@ function favourite_list()
 					crossDomain: true,
 					success: function(data)
 					{
-						if(data.result != "")
+						if(typeof data.result != "undefined" && data.result != "")
 						{
 							$('#fav-list > li ').remove();
 							$.each(data.result,function(index,value){
@@ -2483,6 +2488,7 @@ function favourite_list()
 						$.mobile.hidePageLoadingMsg();
 						
 						$.mobile.changePage('#listing-fav',{transition:'flip'});
+						$('#listing-fav').find('a[data-role="button"]').not('.ui-btn').button();
 						
 					}
 				});
@@ -2667,6 +2673,12 @@ function gotoMesinfants()
 
 function editInfant(obj)
 {
+	
+	if($.trim($("#par-ppedit-infant #infant_form_name").val()) == "" || $("#par-ppedit-infant #infant_form_age").val()=="")
+	{
+		alert("Se il vous plaît remplir tous les champs");
+		return false;
+	}
 	var user=JSON.parse(window.localStorage['userdata']);
 	var senddata = {id:$("#par-ppedit-infant #infantid").val(),
 		name:$("#par-ppedit-infant #infant_form_name").val(),
@@ -2701,9 +2713,8 @@ function editInfant(obj)
 					
 				}else{
 					var updateref = $('#mes-infants ul.listing').find("#infant-entr-"+senddata.id);
-					console.log($(updateref));
-					$(updateref).find("span").text($("#par-ppedit-infant #kid_form_name").val());
-					$(updateref).find("strong").text($("#par-ppedit-infant #infant_form_age").val());
+					$(updateref).find(".mesinfname").html($("#par-ppedit-infant #infant_form_name").val());
+					$(updateref).find("strong").html($("#par-ppedit-infant #infant_form_age").val());
 				}
 				$("#par-ppedit-infant").popup("close");
 				$('#mes-infants ul.listing').find('a[data-role="button"]').not('.ui-btn').button();
@@ -2719,7 +2730,7 @@ function modifyInfant(obj,edit){
 		if($(obj).attr("id") != "addnewinfant")
 		{
 			var infantid =  $(obj).parents("[id*=infant-entr-]").attr("id").replace("infant-entr-","");
-			var infantname =  $.trim($(obj).parents("[id*=infant-entr-]").find("span").text());
+			var infantname =  $.trim($(obj).parents("[id*=infant-entr-]").find(".mesinfname").text());
 			var infantage =  $.trim($(obj).parents("[id*=infant-entr-]").find("strong").text());
 			$("#par-ppedit-infant #infant_form_name").val(infantname);
 			$("#par-ppedit-infant #infant_form_age").val(infantage.replace ( /[^\d.]/g, '' ));
@@ -2748,30 +2759,54 @@ function modifyInfant(obj,edit){
 	}
 }
 
+
 function view_message()
 {
 	
-	
+	$('.message-menu >li').removeClass('active');
+	$('.message-menu >li:first').addClass('active');
 	view_message_list(0);
 	
 }
 
 function view_message_list(index)
 {
+	
 	var url;
 	var user=JSON.parse(window.localStorage['userdata']);
 	if(index == 0)
 	{
 		//alert('inbox');
-		var url="http://codeuridea.net/kidssitter/parent-app/inbox/"+user.id;
+		if(window.localStorage['user_type']=="user_parent")
+		{
+			var url="http://codeuridea.net/kidssitter/parent-app/inbox/"+user.id;
+		}
+		else
+		{
+			var url="http://codeuridea.net/kidssitter/sitter-app/inbox/"+user.id;
+		}
 	}
 	else if(index == 1)
 	{
-		//alert('sent');
+		if(window.localStorage['user_type']=="user_parent")
+		{
+			var url="http://codeuridea.net/kidssitter/parent-app/sent/"+user.id;
+		}
+		else
+		{
+			var url="http://codeuridea.net/kidssitter/sitter-app/sent/"+user.id;
+		}
 	}
 	else
 	{
-		//alert('delete');
+		if(window.localStorage['user_type']=="user_parent")
+		{
+			var url="http://codeuridea.net/kidssitter/parent-app/deleted/"+user.id;
+		}
+		else
+		{
+			var url="http://codeuridea.net/kidssitter/sitter-app/deleted/"+user.id;
+		}
 	}
 	$.mobile.showPageLoadingMsg();
 	$.ajax({
@@ -2783,14 +2818,16 @@ function view_message_list(index)
 				{
 					$('#thread-list').html('');
 					var html='';
-					if(data.message != null)
+					if(data.message != '')
 					{
 						
 						$.each(data.message,function(index,value)
 						{
-							html+='<div class="message" id="thread_'+value.id+'"><div class="author"><img src="'+value.src+'" height="80" alt=""><h1>'+value.sent_by+'<strong><a href="#">'+value.subject+'</a></strong><small>'+value.created_at.date+'</small></h1></div></div>';
+							html+='<div class="message" id="thread_'+value.id+'" ><div class="author"><img src="'+value.src+'" height="80" alt=""><h1>'+value.sent_by+'<strong><a href="#" thread="'+value.id+'" onclick="view_thread('+value.id+',$(this));">'+value.subject+'</a></strong><small>'+value.created_at.date+'</small></h1></div><a href="#" onClick="del_undel_thread('+value.id+')" data-role="button" class="btn-red">Supprimer</a><a href="#" onClick="view_thread('+value.id+',\''+value.subject+'\')" data-role="button" class="btn-green" id="">Répondre</a></div>';
+							
 						
 						});
+						
 					}
 					else
 					{
@@ -2799,6 +2836,245 @@ function view_message_list(index)
 					$('#thread-list').html(html);
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.changePage('#messagerie',{transition:'flip'});
+					$('#thread-list').find('a[data-role="button"]').not('.ui-btn').button();
 				}
 		   });
 }
+
+function view_thread(ids,subject)
+{
+	var url;
+	var sub=$(subject).text();
+	var t=$(subject).attr('thread');
+	//alert(t);
+	$('#subject').val(sub);
+	$('#thread').val(t);
+	var user=JSON.parse(window.localStorage['userdata']);
+	if(window.localStorage['user_type']=="user_sitter")
+	{
+		url="http://codeuridea.net/kidssitter/sitter-app/thread/"+ids;
+	}
+	else
+	{
+		url="http://codeuridea.net/kidssitter/parent-app/thread/"+ids
+	}
+	$.ajax({
+			 type: "POST",
+				url:url,
+				dataType: "json",
+				crossDomain: true,
+				success: function(data)
+				{
+					$('#thread-message-list').html('');
+					var html='';
+					if(data.msg != '')
+					{
+						
+						$.each(data.msg,function(index,value)
+						{
+							html+='<div class="message" ><div class="author"><img src="'+value.src+'" height="70" alt=""><h1>'+value.created_by+'<small>'+value.created_at.date+'</small></h1></div><div class="content"><p>'+value.body+'</p></div></div>';
+							//$('#participant').val('');
+							
+							if(value.created_by_id != user.id)
+							{
+								
+								$('#participant').val(value.created_by_id);
+							}
+						});
+					}
+					else
+					{
+						html="<div class='message'><h4 style='text-align:center'>No result found</h4></div>"
+					}
+					$('#thread-message-list').html(html);
+					$('#response').val('');
+					$.mobile.hidePageLoadingMsg();
+					$.mobile.changePage('#messagerie-list',{transition:'flip'});
+				}
+		   });
+}
+
+function send_response()
+{
+	var receiver=$('#participant').val();
+	var user=JSON.parse(window.localStorage['userdata']);
+	
+	var body,subject;
+	if(window.localStorage['user_type'] == 'user_sitter')
+	{
+		//var url="http://localhost/kidssitter-prev/parent/send/"+receiver;
+		var url="http://codeuridea.net/kidssitter/parent/send/"+receiver;
+		
+	}
+	else
+	{
+		var url="http://codeuridea.net/kidssitter/sitter/send/"+receiver;
+		
+	}
+	subject=$('#subject').val();
+	body=$('#response').val();
+	var thread=$('#thread').val();
+	if(body == '')
+	{
+		alert("please fill all the fields");
+	}
+	else
+	{	
+		$.mobile.showPageLoadingMsg();
+		$.ajax({
+				 type: "POST",
+					url:url,
+					data:{'user':user.id,'body':body,'thread':thread},
+					dataType: "json",
+					crossDomain: true,
+					success: function(data)
+					{
+						alert(data.msg);
+						$('#response').val('');
+						$.mobile.hidePageLoadingMsg();
+						/*user['remained_message']=data.qouta;
+						window.localStorage['userdata']=JSON.stringify(user);
+						view_thread(thread);*/
+						view_thread(thread,subject);
+					}
+		   });
+	 }
+}
+
+function del_undel_thread(thread)
+{
+	var index=$('.message-menu').find('.active').index();
+	var url;
+	var user=JSON.parse(window.localStorage['userdata']);
+	if( index != 2)
+	{
+		if(window.localStorage['user_type'] == 'user_sitter')
+		{
+			url="http://codeuridea.net/kidssitter/sitter-app/delete/"+user.id;
+		}
+		else
+		{
+			url="http://codeuridea.net/kidssitter/parent-app/delete/"+user.id;
+		}
+		
+	}
+	else
+	{
+		if(window.localStorage['user_type'] == 'user_sitter')
+		{
+			url="http://codeuridea.net/kidssitter/sitter-app/undelete/"+user.id;
+		}
+		else
+		{
+			url="http://codeuridea.net/kidssitter/parent-app/undelete/"+user.id;
+		}
+	}
+		$.ajax({
+				 type: "POST",
+					url:url,
+					data:{'thread':thread},
+					dataType: "json",
+					crossDomain: true,
+					success: function(data)
+					{
+						
+						alert(data.msg);
+						$.mobile.hidePageLoadingMsg();
+						view_message();
+						/*user['remained_message']=data.qouta;
+						window.localStorage['userdata']=JSON.stringify(user);
+						view_thread(thread);*/
+						
+					}
+		   });
+		
+	
+}
+/********Exit app*********/
+function exitFromApp()
+{
+	navigator.app.exitApp();
+}
+/********Exit app*********/
+/******** News letter **********/
+function gotoNewsletter()
+{
+	$.mobile.changePage('#newsletterpp',{transition:'flip'});
+}
+function savenewsletter()
+{
+	//check proper email
+	var valid = true;
+	var mail= $("#optin_add").find("#optin_email").val();
+    var atpos = mail.indexOf("@");
+    var dotpos = mail.lastIndexOf(".");
+    if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
+        $("#optin_add").find(".return").html("Not a valid e-mail address");
+        valid = false;
+    }
+	$("#optin_add").find("#optin_email").focus(function(){
+		$("#optin_add").find(".return").html("");
+	});
+	if(valid)
+	{
+		datasnd = {optin:{email:mail}};
+		console.log(datasnd);
+		$.ajax({
+			type: "POST",
+			url:"http://codeuridea.net/kidssitter/ajax/optin/add",
+			data:datasnd,
+			dataType: "json",
+			crossDomain: true,
+			success: function(data)
+			{
+				if(data.status=="ok")
+				{
+					 $("#optin_add").find(".return").html(data.value);
+				}
+			}
+		});
+
+	}
+}
+
+
+
+/******** News letter **********/
+/***********************share my profile ***************/
+function sharemyprofile()
+{
+	if(window.localStorage['loggedin']=='1'){
+		var user_data = JSON.parse(window.localStorage['userdata']);
+		var typeUser = "sitter";
+		if(window.localStorage['user_type']== "user_parent")
+			typeUser = "parent";
+		window.plugins.socialsharing.share(user_data.firstname+': Mon profil',
+	      null,
+	      null,
+	      'http://codeuridea.net/kidssitter/'+typeUser+user_data.id)
+	 }
+}
+
+function restrictMenuByLogin()
+{
+	setTimeout(function(){
+		if(typeof window.localStorage['loggedin'] == "undfined" || parseInt(window.localStorage['loggedin'])!=1){
+			$(".ifloggedin").hide();
+		}else{
+		}
+	},1000);
+}
+/***********************share my profile ***************/
+/*********in app browser for offers************/
+function gotoPurchaseOffer(oferselected)
+{
+	var user_data = JSON.parse(window.localStorage['userdata']);
+	var typeUser = "sitter";
+	if(window.localStorage['user_type']== "user_parent")
+		typeUser = "parent";
+	var ref = window.open('http://codeuridea.net/paymentgw/transaction_intermediet.php?ofertype='+typeUser+"-"+oferselected+'&uid='+user_data.id, '_blank', 'location=yes');
+	ref.addEventListener('exit', function(event) { alert("under development"); });
+	//ref.executeSript({file: "myscript.js"});
+}
+/*********in app browser for offers************/
+/*********in app browser for offers************/
