@@ -24,7 +24,7 @@
     <preference name="android-minSdkVersion" value="9" />
     <preference name="android-installLocation" value="auto" />
 	<preference name="loadInWebView" value="true"/>
-	<preference name="LoadUrlTimeoutValue" value="60000"/>
+	<preference name="LoadUrlTimeoutValue" value="70000"/>
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
