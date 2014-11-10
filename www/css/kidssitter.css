@@ -97,6 +97,32 @@
   color: #85b500 !important;
 }
 
+/* line 65, ../scss/kidssitter.scss */
+.purple-block {
+  background: #a82abb;
+  padding: 7px;
+}
+/* line 68, ../scss/kidssitter.scss */
+.purple-block h1, .purple-block i {
+  color: #fff;
+  text-shadow: none;
+}
+/* line 72, ../scss/kidssitter.scss */
+.purple-block h1 {
+  font-size: 18px;
+  padding: 0px 10px;
+}
+/* line 76, ../scss/kidssitter.scss */
+.purple-block p {
+  font-size: 13px;
+  padding: 0px 10px;
+}
+
+/* line 82, ../scss/kidssitter.scss */
+.purple {
+  color: #85b500 !important;
+}
+
 /* line 86, ../scss/kidssitter.scss */
 .radius {
   border-radius: 8px;
@@ -199,16 +225,25 @@
   color: #2899c9;
 }
 /* line 172, ../scss/kidssitter.scss */
-.red-block #offres-sitter .price span {
+#offres-parents .red-block .price ,.red-block #offres-sitter .price span {
   color: #c9287e;
 }
 /* line 177, ../scss/kidssitter.scss */
-#offres-sitter .red-block .price {
+#offres-parents .red-block .price ,#offres-sitter .red-block .price {
   background: url("../images/puce-link-red.png") 13px center no-repeat white;
+}
+#offres-parents .purple-block {
+  margin-bottom:10px;
+}
+#offres-parents .blue-block {
+  margin-bottom:10px;
 }
 /* line 180, ../scss/kidssitter.scss */
 #offres-sitter .red-block .price {
   color: #c9287e;
+}
+#offres-parents .purple-block .price {
+  color: #a82abb;
 }
 /* line 183, ../scss/kidssitter.scss */
 #offres-sitter .description {
@@ -281,6 +316,10 @@
 #offres-parents .blue-block .price {
   background: url("../images/puce-link.png") 13px center no-repeat white;
   color: #2899c9;
+}
+#offres-parents .purple-block .price {
+  background: url("../images/puce-link-purple.png") 13px center no-repeat white;
+  color: #a82abb;
 }
 /* line 241, ../scss/kidssitter.scss */
 #offres-parents .green-block {
@@ -1639,4 +1678,9 @@ td.check {
 /* line 422, ../scss/kidssitter.scss */
 #messagerie-list .message.sent h1 {
   color: #cb4e5d !important;
+}
+.profile-menu-icon{
+	float: left;
+    margin: 9px 9px 0;
+    width: auto;
 }

@@ -78,7 +78,7 @@
 	$('div').live('pageshow',function(event){
 		restrictMenuByLogin();
 	});
-
+	updateLastLogedin();
 	});
 
 //logout function-----------------------------------------
@@ -1982,17 +1982,17 @@ function view_my_profile_sitter()
 		{
 			skype="";
 		}
-		if(userdetails.certified == 1)
+		if(userdetails.certified == true)
 		{
 			certified="certified";
 			$('#fiche-kid').find('.abonnement').css('display','none');
 		}
-		if(userdetails.verified == 1)
+		if(userdetails.verified == true)
 		{
 			certified="Verified";
 			$('#fiche-kid').find('.abonnement').css('display','block');
 		}
-		if(userdetails.certified == 1 && userdetails.verified == 1)
+		if(userdetails.certified == false && userdetails.verified == false)
 		{
 			certified="Gratuit ";
 			$('#fiche-kid').find('.abonnement').css('display','block');
@@ -2337,7 +2337,29 @@ function getConnected(Ctime,stime)
 	}
 	else
 	{
-		time=Math.round(connected)+" jours";
+		if(connected <= 1)
+		{
+			var h=Math.round(connected/60);
+			var min=Math.round(connected%60);
+			if( min>=1 && h>=1)
+			{
+				time=Math.round(h)+" heures et "+Math.round(min)+" minute";
+			}
+			else if(min ==0)
+			{
+				time=Math.round(h)+" heures";
+			}
+			else
+			{
+				time=Math.round(min)+" minute";
+			}
+			
+			
+		}
+		else
+		{
+			time=Math.round(connected)+" jours";
+		}
 	}
 
 	return time;
@@ -3068,13 +3090,77 @@ function restrictMenuByLogin()
 /*********in app browser for offers************/
 function gotoPurchaseOffer(oferselected)
 {
+	if(typeof window.localStorage['loggedin'] == "undfined" || parseInt(window.localStorage['loggedin'])!=1){
+		$.mobile.changePage('#inscription-parent',{transition:'flip'});
+		return false;
+	}
 	var user_data = JSON.parse(window.localStorage['userdata']);
 	var typeUser = "sitter";
 	if(window.localStorage['user_type']== "user_parent")
 		typeUser = "parent";
-	var ref = window.open('http://codeuridea.net/paymentgw/transaction_intermediet.php?ofertype='+typeUser+"-"+oferselected+'&uid='+user_data.id, '_blank', 'location=yes');
-	ref.addEventListener('exit', function(event) { alert("under development"); });
-	//ref.executeSript({file: "myscript.js"});
+	//console.log(user_data.subscription.isEnabled+"hello");
+	
+	if(user_data.subscription.isEnabled != true && user_data.subscription.isEnabled != 'true')
+	{
+		var ref = window.open('http://codeuridea.net/kidssitter/checkout-app/'+oferselected+'/'+user_data.id, '_blank', 'location=yes');
+		ref.addEventListener('exit', function(event) { 
+			//fetch user data
+			$.mobile.showPageLoadingMsg();
+			$.ajax({
+				type: "POST",
+				url:"http://codeuridea.net/kidssitter/kidssitter-app-user/"+user_data.id,
+				dataType: "json",
+				crossDomain: true,
+				success: function(data)
+				{
+					window.localStorage['userdata']=JSON.stringify(data.user_data);
+					$.mobile.hidePageLoadingMsg();
+				},
+				error:function(event, jqxhr, settings, thrownError)
+				{
+					$.mobile.hidePageLoadingMsg();
+				}
+			});
+			view_profile();
+		});
+	}else{
+		alert("Vous avez déjà subcribed!!!");
+	}
 }
 /*********in app browser for offers************/
-/*********in app browser for offers************/
+
+function reset_password()
+{
+	var username=$('#username').val();
+	if(username=='')
+	{
+		alert('please enter email id');
+	}
+	else
+	{
+		$.ajax({
+				type: "POST",
+				url:"http://codeuridea.net/kidssitter/resetting/send-email",
+				data:{'username':$('#username').val()},
+				dataType: "json",
+				crossDomain: true
+			});
+	}
+}
+
+function updateLastLogedin()
+{
+	window.setInterval(function () {
+		//connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if(typeof window.localStorage['loggedin'] != "undfined" && 
+			parseInt(window.localStorage['loggedin']) == 1 &&
+			navigator.onLine
+		){
+			$.ajax({
+				type: "POST",
+				url:"",//"http://codeuridea.net/kidssitter/resetting/send-email",
+				dataType: "json"
+			});
+		}
+	}, 30000);	
+}

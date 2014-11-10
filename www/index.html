@@ -59,7 +59,7 @@
 				<li><img src="./images/noter-lapil-icon.png" class="nav-icon-img" alt=""/><a href="#">Noter l'application</a></li>
 				<li><img src="./images/facebook.png" class="nav-icon-img"  alt=""/><a href="#" onClick="kidssitterFbpg();">Facebook</a></li>
 				<li><img src="./images/twetter.png" class="nav-icon-img" alt=""/><a href="#" onClick="kidssittertweetpg();">Twitter</a></li>
-				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">News Letter</a></li>
+				<li class="new-sletter"><a href="#" onClick="gotoNewsletter();">NewsLetter</a></li>
 				<li class="logout"><img src="./images/log-out.png" class="nav-icon-img" alt=""/><a href="#">D&eacute;connexion</a></li>
 				<li class="exitapp"><a href="#" onClick="exitFromApp();">sortie Kids-sitter</a></li>
 			</ul>
@@ -221,7 +221,7 @@
 				<input type="text" placeholder="Email" id="email">
 				<input type="password" placeholder="Mot de passe" id="password">
 				<a href="#" class="btn-red" data-role="button" onclick="login_check()">S'identifier</a>
-				<a href="#" class="forgot">Mot de passe oubli&eacute; ?</a>	
+				<a href="#" class="forgot" onclick="$.mobile.changePage('#reset-password',{transition:'pop'})">Mot de passe oubli&eacute; ?</a>	
 			</div>
 		</div>
 	
@@ -780,7 +780,7 @@
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#">Le Blog Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#concept-kid',transition:'flip');">Le Concept Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="offeres_nav()" >Offres</a></li>
-				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#cgu-kid',{transition:'flip'});">. Kidssitter</a></li>
+				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#cgu-kid',{transition:'flip'});">Kidssitter</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="$.mobile.changePage('#mentions-legales',{transition:'flip'});">Mentions l&eacute;gales</a></li>
 				<li><img src="./images/blog-icon.png" class="nav-icon-img"  alt=""/><a href="#" onclick="faq_nav()" >FAQ</a></li>
 				<li class="ifloggedin"><img src="./images/partager-icon.png" class="nav-icon-img-02" alt=""/><a href="#" onclick="sharemyprofile();">Partager mon profil</a></li>
@@ -1050,17 +1050,20 @@
 			<li><a href="#" onClick='$.mobile.changePage("#fiche-edit-planning",{transition:"flip"})'><i class="fa fa-calendar"></i> Disponibilités <i class="fa fa-angle-right"></i></a></li>
 			<li><a href="#"><i class="fa fa-clock-o"></i> Lancer une garde d'urgence <i class="fa fa-angle-right"></i></a></li>
 			<li>
+			<img src="./images/editor-mes.png" alt="" height="20" width="15" class="profile-menu-icon"/>
 			<a href="#" onClick="gotoEditProf();">
-					<img src="./images/editor-mes.png" alt="" height="20" width="15"/> Editer mes informations <i class="fa fa-angle-right"></i>
+					 Editer mes informations <i class="fa fa-angle-right"></i>
 				</a>
 			</li>
 			<li>
+			<img src="./images/mes-infants.png" alt="" height="20" width="15" class="profile-menu-icon"/> 
 				<a href="#" onClick="gotoMesinfants();">
-					<img src="./images/mes-infants.png" alt="" height="20" width="15"/> 
 					Mes Infants <i class="fa fa-angle-right"></i>
 				</a>
 			</li>
-			<li><a href="#" onclick="favourite_list()"><img src="./images/icon-fevoris.png" height="15" width="15"  alt=""/>Mes favoris<i class="fa fa-angle-right"></i></a></li>
+			<li>
+			<img src="./images/icon-fevoris.png" height="15" width="15"  alt="" class="profile-menu-icon"/>
+			<a href="#" onclick="favourite_list()">Mes favoris<i class="fa fa-angle-right"></i></a></li>
 		</ul>
 	</div>
 
@@ -2929,8 +2932,8 @@ top:7px;" ">
 			</ul>
 			<div class="green-block radius">
 				<a href="#">
-					<div class="price" onClick="gotoPurchaseOffer('Offre Premium 1 MOIS');">
-						<span>9,90&euro;</span> par mois
+					<div class="price" onClick="gotoPurchaseOffer('6');">
+						<span>4,90&euro;</span> par mois
 					</div>
 					<div class="description">
 						<h1>Offre Premium 1 MOIS</h1>
@@ -2939,13 +2942,41 @@ top:7px;" ">
 			</div>
 			<div class="blue-block radius">
 				<a href="#">
-					<div class="price" onClick="gotoPurchaseOffer('Offre Premium 3 MOIS');">
+					<div class="price" onClick="gotoPurchaseOffer('1');">
+						<span>9,90&euro;</span> par mois
+					</div>
+					<div class="description">
+						<h1>Offre Premium 3 MOIS</h1>
+						<p>
+							<i>Bénéficiez pendant 1 mois de nos avantages premium.</i>
+						</p>
+					</div>
+				</a>
+			</div>
+		
+			<div class="purple-block radius">
+			<!--  style="color:#a82abb;"-->
+				<a href="#">
+					<div class="price" onClick="gotoPurchaseOffer('2');">
 						<span>6,90&euro;</span> par mois
 					</div>
 					<div class="description">
 						<h1>Offre Premium 3 MOIS</h1>
 						<p>
 							<i>Economisez 30%</i>
+						</p>
+					</div>
+				</a>
+			</div>
+			<div class="red-block radius">
+				<a href="#">
+					<div class="price" onClick="gotoPurchaseOffer('3');">
+						<span>4,90&euro;</span> par mois
+					</div>
+					<div class="description">
+						<h1>Offre Premium 1 AN</h1>
+						<p>
+							<i>Economisez  50%</i>
 						</p>
 					</div>
 				</a>
@@ -2992,7 +3023,7 @@ top:7px;" ">
 		<div data-role="content">
 			<h1 class="title">Validation & Certification de votre profil</h1>
 			<div class="blue-block radius">
-				<a href="#" onClick="gotoPurchaseOffer('Membre Valid&eacute; 1 AN')">
+				<a href="#" onClick="gotoPurchaseOffer('4')">
 					<div class="price">
 						<div><span>4,90&euro;</span> par an</div>
 					</div>
@@ -3028,7 +3059,7 @@ top:7px;" ">
 			</ul>
 			<div class="red-block radius">
 				<a href="#">
-					<div class="price" onClick="gotoPurchaseOffer('Membre Certifi&eacute; 1 AN')">
+					<div class="price" onClick="gotoPurchaseOffer('5')">
 						<span>8,90&euro;</span> par an
 					</div>
 					<div class="description">
@@ -3457,7 +3488,26 @@ top:7px;" ">
       </div>
 </div>
 <!--- News Letter -->
+<!-- Forget password-->
 
+<div data-role="page" id="reset-password">
+		<div data-role="header" data-theme="c">
+			<h1><img src="./images/logo.png" alt="Kidssitter" height="13"></h1>
+            <a href="#nav-panel" class="jqm-navmenu-link main-menu-link"  data-icon="bars" data-iconpos="notext" style="display:none">Menu</a>
+			<a href="#" data-role="button" data-icon="back" data-iconpos="notext" class="back-link" data-rel="back">Retour</a>
+		</div>
+		<div data-role="content">
+		<h4>Vous avez oublié votre mot de passe ?</h4>
+		<form action="#" method="post" id="optin_add">
+			<label for="">Adresse e-mail :</label>
+			<input type="email" id="username" name="username"  placeholder="Votre email" />
+			<a href="#" data-role="button" id="optin_submit" class="btn-red" onClick="reset_password()">
+			Réinitialiser le mot de passe</a>
+			<span class="return"></span>
+		</form>
+		</div>
+</div>
+<!-- Forget Passowrd-->
 </body>
 </html>
 <script type="text/javascript">
