@@ -418,3 +418,14 @@ function kidssittertweetpg()
 	else
 		window.open("https://twitter.com/Kidssitter", '_system');
 }
+
+function kidssitterblogpg()
+{
+	var deviceName = "";
+	deviceName = window.device.platform;
+	//alert(deviceName);
+	if(deviceName == "iOS" || deviceName == "iPhone")
+		navigator.app.loadUrl("http://blog.kidssitter.com/",{openExternal : true});
+	else
+		window.open("http://blog.kidssitter.com/", '_system');
+}

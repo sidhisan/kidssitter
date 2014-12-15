@@ -4,6 +4,7 @@
 		//setting the date range
 		var startDate = new Date(today.getFullYear() -96, 1, 1); 
 		var lastDate = new Date(today.getFullYear() -15, 11, 31);
+		$.datepicker.setDefaults($.datepicker.regional['fr']);
 		$.datepicker.setDefaults({
 			dateFormat:"yy-mm-dd",
 			changeYear:true,
@@ -11,7 +12,6 @@
 			minDate:startDate,
 			maxDate:lastDate,
 			changeMonth:true,
-			regional:'fr'
 		});
 		$( ".datepick" ).datepicker();
 		
@@ -90,7 +90,13 @@ function logout()
 	facebookConnectPlugin.logout();
 	$.mobile.hidePageLoadingMsg();
 	$('#password').val('');
-	$.mobile.changePage('#home',{transition:'flip'});
+	//$(".home-concept").css("display","none");
+	var Backlen=history.length-1; 
+	history.go(-Backlen);
+	$('.sos').css('display','none');
+	setTimeout(function(){$.mobile.changePage('#home',{reverse: false, changeHash: false,transition:'flip'})}, 1000);
+	
+	
 }
 	
    
@@ -132,6 +138,16 @@ $("#pgeo").geocomplete({componentRestrictions: { country: 'fr' }, details: "#map
       .bind("geocode:multiple", function(event, results){
       });
 $("#pgeo").trigger("geocode");
+
+$("#geocomplete-sos").geocomplete({componentRestrictions: { country: 'fr' }, details: "#sos-form",
+  detailsAttribute: "data-geo"})
+      .bind("geocode:result", function(event, result){
+      })
+      .bind("geocode:error", function(event, status){
+      })
+      .bind("geocode:multiple", function(event, results){
+      });
+$("#geocomplete-sos").trigger("geocode");
 	  
 	  
   $("#kgeo").geocomplete({componentRestrictions: { country: 'fr' }, details: "#mapform-kid",
@@ -189,7 +205,7 @@ function onDeviceReady() {
 	if(window.localStorage['loggedin']=='1')
 	{
 		$.mobile.showPageLoadingMsg();
-		$(".home-concept").css("display","block");
+		//$(".home-concept").css("display","block");
 		if(window.localStorage['user_type']=='user_sitter')
 		{
 			$('#home-cgu').text('');
@@ -402,7 +418,7 @@ $("#geocomplete").trigger("geocode");
 //login function---------------------------------------------------------------------------------------------
 function login_check()
 {
-	
+	$('.error-msg').css('display','none');
 	var uname= $('#email').val();
 	var pwd=$('#password').val();
 	var error_flag=0;
@@ -508,7 +524,7 @@ function login_check()
 							$("#kgeo").geocomplete("find",data.user_lat);
 							$('#kgeo').trigger('geocode');
 							//alert("geoloc");
-						$.mobile.hidePageLoadingMsg();
+						$.mobile.hidePageLoadingMsg();					
 						$.mobile.changePage("#listing-parents",{transition:"flip"});
 						}
 						else
@@ -587,7 +603,9 @@ function login_check()
 							
 								$("#pgeo").geocomplete("find",data.user_lat);
 								$('#pgeo').trigger('geocode');
+								$('.sos').css('display','block');
 							$.mobile.hidePageLoadingMsg();
+							
 							$.mobile.changePage("#listing-kid",{transition:"flip"});
 						}
 						$('.logout').css('display','block');
@@ -599,7 +617,15 @@ function login_check()
 						window.localStorage["password"]="";
 						window.localStorage['loggedin']='0';
 						window.localStorage['user_type']="";
-						alert("You have entered wrong username or password.Please try again.");
+						//alert("You have entered wrong username or password.Please try again.");
+						if(data.flag == 'wrong username')
+						{
+							$('#email').parent('div').next('span').css('display','block');
+						}
+						else if(data.flag == 'wrong password')
+						{
+							$('#password').parent('div').next('span').css('display','block');
+						}
 					}
 			}
 			
@@ -941,25 +967,35 @@ function offeres_nav()
 		}
 	}
 	
-	function submit_search_parent()
+	function submit_search_parent(s_type)
 	{
-		$.mobile.showPageLoadingMsg();
-		var datas = $("#search-parent").serialize();
-		console.log(datas);
-		var edu=$("#p_edu :radio:checked").val();
-		var type=$("#p_type :radio:checked").val();
-		var gender=$("#gp_gender").val();
-		var lat=$("input[name=gp_lat]").val();
-		var lng=$("input[name=gp_lng]").val();
-		var address=$("input[name=gp_address]").val();
-		var distance=$("input[name=gp_distance]").val();
-		var language=$("input[name=gp_language]").val();
-		var pdata=[];
-		$('input:checkbox[name="planning[]"]:checked').each(function() 
-		{
-		   pdata.push($(this).val());
-		});
 		
+		var datas = $("#search-parent").serialize();
+		//console.log(datas);
+		if(s_type == 'additional')
+		{
+			var edu=$("input[name=gp_education]:checked").val();
+			var type=$("input[name=p_type]:checked").val();
+			var gender=$("#gp_gender").val();
+			var lat=$("input[name=gp_lat]").val();
+			var lng=$("input[name=gp_lng]").val();
+			var address=$("input[name=gp_address]").val();
+			var distance=$("input[name=gp_distance]").val();
+			var language=$("input[name=gp_language]").val();
+			var pdata=[];
+			$('input:checkbox[name="planning[]"]:checked').each(function() 
+			{
+			   pdata.push($(this).val());
+			});
+		}
+		else
+		{
+			var lat=$("input[name=p_lat]").val();
+			var lng=$("input[name=p_lng]").val();
+			var address=$("input[name=parent_geo]").val();
+			var distance=10;
+		}
+		$.mobile.showPageLoadingMsg();
 		$.ajax({
 
               url: "http://codeuridea.net/kidssitter/search/sitter-app",
@@ -979,76 +1015,86 @@ function offeres_nav()
 						var addr=$('#geo-of-parent').val();
 						window.localStorage['user_listing_data']=JSON.stringify(data.result);
 						window.localStorage['address']=addr;
+						//alert(data.result.length);
 						if(data.result != null)
 						{
-							
-							var j=0;
-							$.each(data.result,function(index,value){
-							var certified,valid;
-							if(value.certified == "1")
+							if(data.result.length != 0)
 							{
-								certified="display:block";
+								var j=0;
+								$.each(data.result,function(index,value){
+								var certified,valid;
+								if(value.certified == "1")
+								{
+									certified="display:block";
+								}
+								else
+								{
+								certified="display:none";
+								}
+								
+								if(value.verified == "1")
+								{
+								valid="display:block";
+								}
+								else
+								{
+								valid="display:none";
+								}
+								
+								if(value.lname != null)
+								{
+									var lname=value.lname.substring(0,1)+".";
+								}
+								else
+								{
+									var lname="";
+								}
+								
+								if(value.rate != null)
+								{
+									var rate=value.rate+"&euro;/H";
+								}
+								else
+								{
+									var rate="";
+								}
+								if(value.type_sitter != null)
+								{
+									var type=value.type_sitter+" - ";
+								}
+								else
+								{
+									var type="";
+								}
+								
+								var i=0;
+								var rates=parseInt(value.rating);
+								if(rates !=0)
+								{
+								for (i=0;i<rates;i++)
+								{
+									
+									$(".avis:eq("+j+") > .rating:eq("+i+")").attr('src','');
+									$(".avis:eq("+j+") > .rating:eq("+i+")").attr('src','./images/check-done.png');
+								}
+								}
+								j++;
+								
+								var htmls='<li class="result"><a href="#" onclick="get_profile_details('+value.id+',\'sitter\')"><img src="./images/certifie-listing.png" alt="" width="70" height="70" class="float certi" style="'+certified+'"><img src="./images/valide-listing.png" alt="" width="70" height="70" class="float valid" style="'+valid+'">'+value.src+'<h1>'+value.fname+' '+lname+' ('+value.age+' ans)</h1><strong>'+type+' '+value.locality+'</strong><div class="avis"><span class="rating r'+value.rating+'"></span><b>'+rate+'</b></div><div class="distance"><img src="./images/distance-listing.png" height="30" alt=""><br/>'+value.distance+' KM</div><input type="hidden" id="sitter-distance-'+value.id+'" value="'+value.distance+'"><div class="arrow"><img src="./images/arrow-listing.png" height="20" alt="" ></div></a></li>';
+									$("#near-parent").append(htmls);
+									
+								});
 							}
 							else
-							{
-							certified="display:none";
-							}
-							
-							if(value.verified == "1")
-							{
-							valid="display:block";
-							}
-							else
-							{
-							valid="display:none";
-							}
-							
-							if(value.lname != null)
-							{
-								var lname=value.lname.substring(0,1)+".";
-							}
-							else
-							{
-								var lname="";
-							}
-							
-							if(value.rate != null)
-							{
-								var rate=value.rate+"&euro;/H";
-							}
-							else
-							{
-								var rate="";
-							}
-							if(value.type_sitter != null)
-							{
-								var type=value.type_sitter+" - ";
-							}
-							else
-							{
-								var type="";
-							}
-							
-							var i=0;
-							var rates=parseInt(value.rating);
-							if(rates !=0)
-							{
-							for (i=0;i<rates;i++)
 							{
 								
-								$(".avis:eq("+j+") > .rating:eq("+i+")").attr('src','');
-								$(".avis:eq("+j+") > .rating:eq("+i+")").attr('src','./images/check-done.png');
+								var htmls="<li class='result'><h4  style='text-align:center'>No Result Found.</h4></li>";
+								$("#near-parent").html(htmls);
 							}
-							}
-							j++;
-							
-							var htmls='<li class="result"><a href="#" onclick="get_profile_details('+value.id+',\'sitter\')"><img src="./images/certifie-listing.png" alt="" width="70" height="70" class="float certi" style="'+certified+'"><img src="./images/valide-listing.png" alt="" width="70" height="70" class="float valid" style="'+valid+'">'+value.src+'<h1>'+value.fname+' '+lname+' ('+value.age+' ans)</h1><strong>'+type+' '+value.locality+'</strong><div class="avis"><span class="rating r'+value.rating+'"></span><b>'+rate+'</b></div><div class="distance"><img src="./images/distance-listing.png" height="30" alt=""><br/>'+value.distance+' KM</div><input type="hidden" id="sitter-distance-'+value.id+'" value="'+value.distance+'"><div class="arrow"><img src="./images/arrow-listing.png" height="20" alt="" ></div></a></li>';
-								$("#near-parent").append(htmls);
-								
-							});
 						}
-						else{
-						
+						else
+						{
+							
 							var htmls="<li class='result'><h4  style='text-align:center'>No Result Found.</h4></li>";
 							$("#near-parent").html(htmls);
 						}
@@ -1081,20 +1127,30 @@ function additional_search_sitter()
 			 $.mobile.changePage('#recherche-kid',{transition:'turn'});
 		}
 	}
-function submit_search_sitter()
+function submit_search_sitter(s_type)
 	{	
-		$.mobile.showPageLoadingMsg();
-		var type=$("#s_type :radio:checked").val();
-		var lat=$("input[name=gs_lat]").val();
-		var lng=$("input[name=gs_lng]").val();
-		var address=$("input[name=gs_address]").val();
-		var distance=$("input[name=gs_distance]").val();
-		var pdata=[];
-		$('input:checkbox[name="planning[]"]:checked').each(function() 
-		{
-		   pdata.push($(this).val());
-		});
 		
+		if(s_type == 'additional')
+		{
+			var type=$("input[name=s_type]:checked").val();
+			var lat=$("input[name=gs_lat]").val();
+			var lng=$("input[name=gs_lng]").val();
+			var address=$("input[name=gs_address]").val();
+			var distance=$("input[name=gs_distance]").val();
+			var pdata=[];
+			$('input:checkbox[name="planning[]"]:checked').each(function() 
+			{
+			   pdata.push($(this).val());
+			});
+		}
+		else
+		{
+			var lat=$("input[name=k_lat]").val();
+			var lng=$("input[name=k_lng]").val();
+			var address=$("input[name=kgeo]").val();
+			var distance=10;
+		}
+		$.mobile.showPageLoadingMsg();
 		$.ajax({
 
 				  url: "http://codeuridea.net/kidssitter/search/parent-app",
@@ -1115,52 +1171,60 @@ function submit_search_sitter()
 							window.localStorage['address']=addr;
 							if(data.result != null)
 							{
-								//alert('1');
-								var j=0;
-								$.each(data.result,function(index,value)
+								if(data.result.length !=0)
 								{
-									var urgence,premium;
-									
-									if(value.urgence == true)
+								//alert('1');
+									var j=0;
+									$.each(data.result,function(index,value)
 									{
-										urgence="display:block";
-									}
-									else
-									{
-										urgence="display:none";
-									}
-									
-									if(value.premium != null)
-									{
-										var diffDays=get_date_diff(value.premium.endDate.date,value.server);
-										console.log(diffDays);
-										if(diffDays<=0)
+										var urgence,premium;
+										
+										if(value.urgence == true)
 										{
-											premium="display:block";
-											
+											urgence="display:block";
+										}
+										else
+										{
+											urgence="display:none";
+										}
+										
+										if(value.premium != null)
+										{
+											var diffDays=get_date_diff(value.premium.endDate.date,value.server);
+											console.log(diffDays);
+											if(diffDays<=0)
+											{
+												premium="display:block";
+												
+											}
+											else
+											{
+												premium="display:none";
+											}
 										}
 										else
 										{
 											premium="display:none";
 										}
-									}
-									else
-									{
-										premium="display:none";
-									}
-									
-									if(value.lname != null)
-									{
-										var lname=value.lname.substring(0,1)+".";
-									}
-									else
-									{
-										var lname="";
-									}
-									var htmls='<li class="result"><a href="#" onclick="get_profile_details('+value.id+',\'parent\')"><img src="./images/urgence-listing.png" alt="" width="70" height="70" class="float certi" style="'+urgence+'"><img src="./images/premium-listing.png" alt="" width="70" height="70" class="float valid" style="'+premium+'">'+value.src+'<h1>'+value.fname+' '+lname+' ('+value.age+' ans)</h1><strong>'+value.locality+'</strong><div class="distance"><img src="./images/distance-listing.png" height="30" alt=""><br/>'+value.distance+' KM</div><input type="hidden" id="parent-distance-'+value.id+'" value="'+value.distance+'"><div class="arrow"><img src="./images/arrow-listing.png" height="20" alt="" ></div></a></li>';
-									
-										$("#near-kid").append(htmls);
-								});
+										
+										if(value.lname != null)
+										{
+											var lname=value.lname.substring(0,1)+".";
+										}
+										else
+										{
+											var lname="";
+										}
+										var htmls='<li class="result"><a href="#" onclick="get_profile_details('+value.id+',\'parent\')"><img src="./images/urgence-listing.png" alt="" width="70" height="70" class="float certi" style="'+urgence+'"><img src="./images/premium-listing.png" alt="" width="70" height="70" class="float valid" style="'+premium+'">'+value.src+'<h1>'+value.fname+' '+lname+' ('+value.age+' ans)</h1><strong>'+value.locality+'</strong><div class="distance"><img src="./images/distance-listing.png" height="30" alt=""><br/>'+value.distance+' KM</div><input type="hidden" id="parent-distance-'+value.id+'" value="'+value.distance+'"><div class="arrow"><img src="./images/arrow-listing.png" height="20" alt="" ></div></a></li>';
+										
+											$("#near-kid").append(htmls);
+									});
+								}
+								else
+								{
+									var htmls="<li class='result'><h4  style='text-align:center'>No Result Found.</h4></li>";
+							        $("#near-kid").html(htmls);
+								}
 							}
 							else{
 						
@@ -1811,13 +1875,13 @@ function view_my_profile_parent()
 		}
 		if(userdetails.kids != 0)
 		{
-			
+			var kids_age_arr=[];
 			for(i=0;i<userdetails.kids.length;i++)
 			{
-				var kids_age_arr=userdetails.kids[i]+" ans,";
+				 kids_age_arr+=userdetails.kids[i]+",";
 			};
 			var kids_age= kids_age_arr.slice(0,-1); 
-			kids=userdetails.kids.length+' enfants - Agé'+kids_age;
+			kids=userdetails.kids.length+' enfants - Agé '+kids_age+' ans';
 		}
 		else
 		{
@@ -2497,7 +2561,7 @@ function favourite_list()
 							{
 								var time="";
 							}
-							var htmls="<li id='fav-"+value.id+"'><a href='#'><img class='photo' src='"+value.src+"' width='70' height='70' alt=''><h1>"+value.firstname+" "+lname+"</h1><strong>connecte (e) il a "+time+"</strong><div class='mesperent-fevoris' style='margin-Top:25px'><p>"+annonce+"</p><a href='#' data-role='button' class='"+button+"' onclick='view_popup("+value.id+")'>Envoyer un message</a><a href='#' data-role='button' onclick='removeFromfavourite("+value.id+")'> Supprimer des favoris</a></div></a></li>";
+							var htmls="<li id='fav-"+value.id+"'><a href='#'><img class='photo' src='"+value.src+"' width='70' height='70' alt=''><h1>"+value.firstname+" "+lname+"</h1><strong>connecté(e) il y a "+time+"</strong><div class='mesperent-fevoris' style='margin-Top:25px'><p>"+annonce+"</p><a href='#' data-role='button' class='"+button+"' onclick='view_popup("+value.id+")'>Envoyer un message</a><a href='#' data-role='button' onclick='removeFromfavourite("+value.id+")'> Supprimer des favoris</a></div></a></li>";
 							$('#fav-list').append(htmls);
 							});
 							
@@ -2786,6 +2850,11 @@ function view_message()
 {
 	
 	$('.message-menu >li').removeClass('active');
+	$('.message-menu >li').removeClass('kidssitter');
+	if(window.localStorage['user_type'] == 'user_sitter')
+	{
+		$('.message-menu >li').addClass('kidssitter');
+	}
 	$('.message-menu >li:first').addClass('active');
 	view_message_list(0);
 	
@@ -2842,13 +2911,24 @@ function view_message_list(index)
 					var html='';
 					if(data.message != '')
 					{
-						
-						$.each(data.message,function(index,value)
+						if(window.localStorage['user_type'] == 'user_parent')
 						{
-							html+='<div class="message" id="thread_'+value.id+'" ><div class="author"><img src="'+value.src+'" height="80" alt=""><h1>'+value.sent_by+'<strong><a href="#" thread="'+value.id+'" onclick="view_thread('+value.id+',$(this));">'+value.subject+'</a></strong><small>'+value.created_at.date+'</small></h1></div><a href="#" onClick="del_undel_thread('+value.id+')" data-role="button" class="btn-red">Supprimer</a><a href="#" onClick="view_thread('+value.id+',\''+value.subject+'\')" data-role="button" class="btn-green" id="">Répondre</a></div>';
+							$.each(data.message,function(index,value)
+							{
+								html+='<div class="message" id="thread_'+value.id+'" ><div class="author"><img src="'+value.src+'" height="80" alt=""><h1>'+value.sent_by+'<strong><a href="#" thread="'+value.id+'" onclick="view_thread('+value.id+',$(this));">'+value.subject+'</a></strong><small>'+value.created_at.date+'</small></h1></div><a href="#" onClick="del_undel_thread('+value.id+')" data-role="button" class="btn-red">Supprimer</a><a href="#" onClick="view_thread('+value.id+',\''+value.subject+'\')" data-role="button" class="btn-green" id="">Répondre</a></div>';
+								
 							
-						
-						});
+							});
+						}
+						else
+						{
+							$.each(data.message,function(index,value)
+							{
+								html+='<div class="message" id="thread_'+value.id+'" ><div class="author"><img src="'+value.src+'" height="80" alt=""><h1>'+value.sent_by+'<strong><a href="#" thread="'+value.id+'" onclick="view_thread('+value.id+',$(this));">'+value.subject+'</a></strong><small>'+value.created_at.date+'</small></h1></div><a href="#" onClick="del_undel_thread('+value.id+')" data-role="button" class="btn-blue">Supprimer</a><a href="#" onClick="view_thread('+value.id+',\''+value.subject+'\')" data-role="button" class="btn-green" id="">Répondre</a></div>';
+								
+							
+							});
+						}
 						
 					}
 					else
@@ -2891,7 +2971,7 @@ function view_thread(ids,subject)
 					var html='';
 					if(data.msg != '')
 					{
-						
+						var m_id="";
 						$.each(data.msg,function(index,value)
 						{
 							html+='<div class="message" ><div class="author"><img src="'+value.src+'" height="70" alt=""><h1>'+value.created_by+'<small>'+value.created_at.date+'</small></h1></div><div class="content"><p>'+value.body+'</p></div></div>';
@@ -2901,6 +2981,20 @@ function view_thread(ids,subject)
 							{
 								
 								$('#participant').val(value.created_by_id);
+							}
+							m_id+=value.m_id+',';
+						});
+						
+						//var messages=m_id.substring(0,-1);
+						$.ajax({
+							type: "POST",
+							url:"http://codeuridea.net/kidssitter/read",
+							data:{'message':m_id,'participant':user.id},
+							dataType: "json",
+							crossDomain: true,
+							success:function(data)
+							{
+								console.log(data);
 							}
 						});
 					}
@@ -3081,8 +3175,13 @@ function restrictMenuByLogin()
 {
 	setTimeout(function(){
 		if(typeof window.localStorage['loggedin'] == "undfined" || parseInt(window.localStorage['loggedin'])!=1){
-			$(".ifloggedin").hide();
+			$(".ifloggedin").css('display','none');
 		}else{
+		 $(".ifloggedin").css('display','block');
+		}
+		if(window.localStorage['user_type'] != "user_parent")
+		{
+			$(".sos").css('display','none');
 		}
 	},1000);
 }
@@ -3100,7 +3199,7 @@ function gotoPurchaseOffer(oferselected)
 		typeUser = "parent";
 	//console.log(user_data.subscription.isEnabled+"hello");
 	
-	if(user_data.subscription.isEnabled != true && user_data.subscription.isEnabled != 'true')
+	if((user_data.subscription == null)||(user_data.subscription.isEnabled != true && user_data.subscription.isEnabled != 'true'))
 	{
 		var ref = window.open('http://codeuridea.net/kidssitter/checkout-app/'+oferselected+'/'+user_data.id, '_blank', 'location=yes');
 		ref.addEventListener('exit', function(event) { 
@@ -3156,11 +3255,160 @@ function updateLastLogedin()
 			parseInt(window.localStorage['loggedin']) == 1 &&
 			navigator.onLine
 		){
+			var user_data = JSON.parse(window.localStorage['userdata']);
 			$.ajax({
 				type: "POST",
-				url:"",//"http://codeuridea.net/kidssitter/resetting/send-email",
+				url:"http://codeuridea.net/kidssitter/kidssitter-app-lastlogin/"+user_data.id,
 				dataType: "json"
 			});
 		}
 	}, 30000);	
 }
+
+function view_sos_form()
+{
+	$('#sos_lat').val('');
+	$('#sos_lng').val('');
+	$('#sos-date').val('');
+	$('#sos-time').val('');
+	$('#geocomplete-sos').val('');
+	var user_data = JSON.parse(window.localStorage['userdata']);
+	if(window.localStorage['user_type'] == 'user_parent' && user_data.subscription!=null)
+	{
+		if(user_data.subscription.isEnabled == true)
+		{
+			$.mobile.changePage('#sos',{'transition':'flip'});
+		}
+		else
+		{
+			alert('Please subscribe as premium user');
+		}
+	}
+	else
+	{
+		alert('Please subscribe as premium user');
+	}
+}
+
+function send_sos()
+{
+	var user_lat=$('#sos_lat').val();
+	var user_lng=$('#sos_lng').val();
+	var user_date=$('#sos-date').val();
+	var user_time=$('#sos-time').val();
+	var user_location=$('#geocomplete-sos').val();
+	//alert(user_date);
+	var user_data=JSON.parse(window.localStorage['userdata']);
+	if(user_date == '' || user_time=='' || user_location=='')
+	{
+		alert('please fill all the fields');
+	}
+	else
+	{
+	
+	var ref = window.open('http://codeuridea.net/kidssitter/sos-payment-app/'+user_data.id+'?lat='+user_lat+'&lng='+user_lng+'&date='+user_date+'&time='+user_time+'&location='+user_location, '_blank', 'location=yes');
+	ref.addEventListener('exit', function(event) { 
+			//fetch user data
+			//$.mobile.showPageLoadingMsg();
+			view_profile();
+			});
+	}
+	
+}
+
+function view_abonnement()
+{
+	var user_data=JSON.parse(window.localStorage['userdata']);
+	if( user_data.subscription != null)
+	{
+		if(user_data.subscription.isEnabled == true)
+		{
+			var date1=user_data.subscription.endDate.date;
+			var dat = date1.replace(/-/g,'/');
+			var date2 = new Date(dat);
+			$('#subs_type').html('');
+			$('#subs_type').html(user_data.subscription.title);
+			$('#subs_enddate').html('');
+			$('#subs_enddate').html(date2.getDate()+'/'+(date2.getMonth()+1)+'/'+date2.getFullYear());
+			$('.unsubscribed').css('display','none');
+			$('.subscribed').css('display','block');
+		}
+		else
+		{	if(window.localStorage['user_type'] == 'user_sitter')
+			{
+			$('#offer-button-sitter').css('display','block');
+			$('#offer-button-parent').css('display','none');
+			}
+			else
+			{
+			$('#offer-button-parent').css('display','block');
+			$('#offer-button-sitter').css('display','none');
+			}
+			$('.unsubscribed').css('display','block');
+			$('.subscribed').css('display','none');
+		}
+		setTimeout(function(){$.mobile.changePage('#abonnement',{transition:'flip'})},1000);
+	}
+	else
+	{
+		if(window.localStorage['user_type'] == 'user_sitter')
+			{
+			$('#offer-button-sitter').css('display','block');
+			$('#offer-button-parent').css('display','none');
+			}
+			else
+			{
+			$('#offer-button-parent').css('display','block');
+			$('#offer-button-sitter').css('display','none');
+			}
+			$('.unsubscribed').css('display','block');
+			$('.subscribed').css('display','none');
+			setTimeout(function(){$.mobile.changePage('#abonnement',{transition:'flip'})},1000);
+	}
+	
+}
+
+
+function view_search_page()
+{
+	$.mobile.showPageLoadingMsg();
+	if(window.localStorage['user_type'] == 'user_sitter')
+	{
+		$.mobile.changePage('#listing-parents',{transition:'flip'});
+	}
+	else
+	{
+		$.mobile.changePage('#listing-kid',{transition:'flip'});
+	}
+}
+
+
+//swipe menubar
+
+$( document ).on( "pageinit","[data-role=page]", function() {
+
+    $( document ).on( "swipeleft swiperight","page", function( e ) {
+        // We check if there is no open panel on the page because otherwise
+        // a swipe to close the left panel would also open the right panel (and v.v.).
+        // We do this by checking the data that the framework stores on the page element (panel: open).
+		
+		if($.mobile.activePage.find('[data-role=panel]').hasClass('ui-panel-closed') &&  e.type === "swiperight")
+		{
+	
+			$.mobile.activePage.find('[data-role=panel]').panel("open");
+		}
+		else if($.mobile.activePage.find('[data-role=panel]').hasClass('ui-panel-open') && e.type === "swipeleft")
+		{
+			$.mobile.activePage.find('[data-role=panel]').panel( "close" );
+		}
+		
+       /* if ($.mobile.activePage.find('#left-panel').hasClass('ui-panel-closed') && e.type === "swipeleft") {
+            $( "#right-panel" ).panel( "open" ); 
+        }    
+
+        if ($.mobile.activePage.find('#right-panel').hasClass('ui-panel-closed') &&  e.type === "swiperight") {
+            $( "#left-panel" ).panel( "open" );           
+        } */
+    });
+});
+
