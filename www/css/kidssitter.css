@@ -1,0 +1,1736 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic);
+/**
+ * Kidssitter
+ */
+/**
+ * Elements
+ */
+/* line 11, ../scss/kidssitter.scss */
+.btn-red {
+  background: #cb4e5d !important;
+  color: #fff !important;
+  text-shadow: none !important;
+  border: none !important;
+}
+/* line 16, ../scss/kidssitter.scss */
+.btn-red:hover {
+  background: #b23443 !important;
+}
+
+/* line 21, ../scss/kidssitter.scss */
+.btn-blue {
+  background: #4ba2c0 !important;
+  color: #fff !important;
+  text-shadow: none !important;
+  border: none !important;
+}
+/* line 26, ../scss/kidssitter.scss */
+.btn-blue:hover {
+  background: #3885a0 !important;
+}
+
+/* line 31, ../scss/kidssitter.scss */
+.blue-block {
+  background: #2899c9;
+  padding: 7px;
+}
+/* line 34, ../scss/kidssitter.scss */
+.blue-block h1, .blue-block i {
+  color: #fff;
+  text-shadow: none;
+}
+/* line 38, ../scss/kidssitter.scss */
+.blue-block h1 {
+  font-size: 18px;
+  padding: 0px 10px;
+}
+/* line 42, ../scss/kidssitter.scss */
+.blue-block p {
+  font-size: 13px;
+  padding: 0px 10px;
+}
+
+/* line 48, ../scss/kidssitter.scss */
+.red-block {
+  background: #c9287e;
+  padding: 7px;
+}
+/* line 51, ../scss/kidssitter.scss */
+.red-block h1, .red-block i {
+  color: #fff;
+  text-shadow: none;
+}
+/* line 55, ../scss/kidssitter.scss */
+.red-block h1 {
+  font-size: 18px;
+  padding: 0px 10px;
+}
+/* line 59, ../scss/kidssitter.scss */
+.red-block p {
+  font-size: 13px;
+  padding: 0px 10px;
+}
+
+/* line 65, ../scss/kidssitter.scss */
+.green-block {
+  background: #b5c928;
+  padding: 7px;
+}
+/* line 68, ../scss/kidssitter.scss */
+.green-block h1, .green-block i {
+  color: #fff;
+  text-shadow: none;
+}
+/* line 72, ../scss/kidssitter.scss */
+.green-block h1 {
+  font-size: 18px;
+  padding: 0px 10px;
+}
+/* line 76, ../scss/kidssitter.scss */
+.green-block p {
+  font-size: 13px;
+  padding: 0px 10px;
+}
+
+/* line 82, ../scss/kidssitter.scss */
+.green {
+  color: #85b500 !important;
+}
+
+/* line 65, ../scss/kidssitter.scss */
+.purple-block {
+  background: #a82abb;
+  padding: 7px;
+}
+/* line 68, ../scss/kidssitter.scss */
+.purple-block h1, .purple-block i {
+  color: #fff;
+  text-shadow: none;
+}
+/* line 72, ../scss/kidssitter.scss */
+.purple-block h1 {
+  font-size: 18px;
+  padding: 0px 10px;
+}
+/* line 76, ../scss/kidssitter.scss */
+.purple-block p {
+  font-size: 13px;
+  padding: 0px 10px;
+}
+
+/* line 82, ../scss/kidssitter.scss */
+.purple {
+  color: #85b500 !important;
+}
+
+/* line 86, ../scss/kidssitter.scss */
+.radius {
+  border-radius: 8px;
+}
+
+/* line 91, ../scss/kidssitter.scss */
+#home .ui-panel-content-wrap.ui-body-c {
+  background: url("../images/background/home.png") !important;
+  background-size: cover !important;
+}
+/* line 95, ../scss/kidssitter.scss */
+#home .baseline {
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+}
+
+#home .baseline img{ max-width:100%;}
+
+/* line 99, ../scss/kidssitter.scss */
+#home .baseline span {
+  display: block;
+  text-shadow: 0px 3px 10px #000;
+  margin-bottom: 45px;
+  font-family: 'Lato', sans-serif;
+}
+/* line 106, ../scss/kidssitter.scss */
+#home .nav {
+  margin-top: 100px;
+}
+
+/* line 112, ../scss/kidssitter.scss */
+#connexion .ui-panel-content-wrap.ui-body-c {
+  background: url("../images/background/connexion.png") !important;
+  background-size: cover !important;
+}
+/* line 116, ../scss/kidssitter.scss */
+#connexion .baseline {
+  color: #fff;
+  font-size: 35px;
+  text-align: center;
+}
+/* line 120, ../scss/kidssitter.scss */
+#connexion .baseline span {
+  display: block;
+  text-shadow: 0px 3px 10px #000;
+  margin-bottom: 45px;
+  font-family: 'Lato', sans-serif;
+}
+/* line 127, ../scss/kidssitter.scss */
+#connexion .nav {
+  border-top: 1px solid #8e8d85;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+/* line 132, ../scss/kidssitter.scss */
+#connexion .forgot {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+  color: #5ec4ff;
+  text-shadow: none;
+}
+
+/* line 148, ../scss/kidssitter.scss */
+#offres-sitter h1.title {
+  color: #4697bc;
+  text-align: center;
+  font-size: 18px;
+}
+/* line 153, ../scss/kidssitter.scss */
+#offres-sitter a {
+  text-decoration: none;
+  border: none;
+}
+/* line 157, ../scss/kidssitter.scss */
+#offres-sitter .price {
+  display: block;
+  background: url("../images/puce-link.png") 13px center no-repeat white;
+  border-radius: 7px;
+  text-shadow: none;
+  color: #2899c9;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 21px;
+  padding: 10px;
+}
+/* line 169, ../scss/kidssitter.scss */
+#offres-sitter .price span {
+  display: block;
+  text-shadow: none;
+  font-size: 25px;
+}
+/* line 171, ../scss/kidssitter.scss */
+.blue-block #offres-sitter .price span {
+  color: #2899c9;
+}
+/* line 172, ../scss/kidssitter.scss */
+#offres-parents .red-block .price ,.red-block #offres-sitter .price span {
+  color: #c9287e;
+}
+/* line 177, ../scss/kidssitter.scss */
+#offres-parents .red-block .price ,#offres-sitter .red-block .price {
+  background: url("../images/puce-link-red.png") 13px center no-repeat white;
+}
+#offres-parents .purple-block {
+  margin-bottom:10px;
+}
+#offres-parents .blue-block {
+  margin-bottom:10px;
+}
+/* line 180, ../scss/kidssitter.scss */
+#offres-sitter .red-block .price {
+  color: #c9287e;
+}
+#offres-parents .purple-block .price {
+  color: #a82abb;
+}
+/* line 183, ../scss/kidssitter.scss */
+#offres-sitter .description {
+  display: block;
+}
+/* line 186, ../scss/kidssitter.scss */
+#offres-sitter ul.listing {
+  list-style: none;
+  margin: 0px 0px 50px 0px;
+  padding: 0px;
+}
+/* line 190, ../scss/kidssitter.scss */
+#offres-sitter ul.listing li {
+  background: url("../images/puce.png") 13px center no-repeat white;
+  color: #6b6b6b;
+  font-size: 15px;
+  padding: 10px 10px 10px 55px;
+}
+/* line 196, ../scss/kidssitter.scss */
+#offres-sitter ul.listing li:nth-child(odd) {
+  background-color: #e5e5e5;
+}
+/* line 199, ../scss/kidssitter.scss */
+#offres-sitter ul.listing h1 {
+  color: #2899c9;
+  font-size: 18px;
+  margin: 0px 0px 5px 0px;
+}
+
+/* line 208, ../scss/kidssitter.scss */
+#offres-parents h1.title {
+  color: #be3f4d;
+  text-align: center;
+  font-size: 18px;
+}
+/* line 213, ../scss/kidssitter.scss */
+#offres-parents a {
+  text-decoration: none;
+  border: none;
+}
+/* line 217, ../scss/kidssitter.scss */
+#offres-parents .price {
+  display: block;
+  background: url("../images/puce-link-green.png") 13px center no-repeat white;
+  border-radius: 7px;
+  text-shadow: none;
+  color: #b5c928;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 21px;
+  padding: 10px;
+}
+/* line 229, ../scss/kidssitter.scss */
+#offres-parents .price span {
+  display: block;
+  text-shadow: none;
+  font-size: 25px;
+}
+/* line 231, ../scss/kidssitter.scss */
+.blue-block #offres-parents .price span {
+  color: #2899c9;
+}
+/* line 232, ../scss/kidssitter.scss */
+.red-block #offres-parents .price span {
+  color: #c9287e;
+}
+/* line 237, ../scss/kidssitter.scss */
+#offres-parents .blue-block .price {
+  background: url("../images/puce-link.png") 13px center no-repeat white;
+  color: #2899c9;
+}
+#offres-parents .purple-block .price {
+  background: url("../images/puce-link-purple.png") 13px center no-repeat white;
+  color: #a82abb;
+}
+/* line 241, ../scss/kidssitter.scss */
+#offres-parents .green-block {
+  margin-bottom: 10px;
+}
+/* line 244, ../scss/kidssitter.scss */
+#offres-parents .description {
+  display: block;
+}
+/* line 247, ../scss/kidssitter.scss */
+#offres-parents ul.listing {
+  list-style: none;
+  margin: 0px 0px 10px 0px;
+  padding: 0px;
+}
+/* line 251, ../scss/kidssitter.scss */
+#offres-parents ul.listing li {
+  background: #fff;
+  color: #6b6b6b;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+/* line 257, ../scss/kidssitter.scss */
+#offres-parents ul.listing li img {
+  float: left;
+  margin-right: 20px;
+}
+/* line 262, ../scss/kidssitter.scss */
+#offres-parents ul.listing h1 {
+  color: #be3f4d;
+  font-size: 18px;
+  margin: 0px 0px 5px 0px;
+}
+
+/* line 271, ../scss/kidssitter.scss */
+#certifier .panel, #valider .panel {
+  position: relative;
+  background: url("../images/panel/certifier.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 200px;
+}
+/* line 276, ../scss/kidssitter.scss */
+#certifier .panel.valider, #valider .panel.valider {
+  background: url("../images/panel/valider.png");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+/* line 281, ../scss/kidssitter.scss */
+#certifier .price, #valider .price {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  color: #fff;
+  font-size: 28px;
+  text-align: center;
+  width: 140px;
+  text-shadow: 0px 0px 5px #94d0d0;
+}
+/* line 290, ../scss/kidssitter.scss */
+#certifier .price span, #valider .price span {
+  display: block;
+}
+/* line 294, ../scss/kidssitter.scss */
+#certifier .valider .price, #valider .valider .price {
+  text-shadow: none;
+}
+
+/* line 300, ../scss/kidssitter.scss */
+#modifier-annonce .containing-element {
+  background: #f6f5f1;
+  height: 80px;
+  text-align: center;
+}
+/* line 304, ../scss/kidssitter.scss */
+#modifier-annonce .containing-element .ui-slider-switch {
+  width: 9em;
+  margin-top: 22px;
+}
+/* line 308, ../scss/kidssitter.scss */
+#modifier-annonce .containing-element .ui-block-a {
+  margin-top: 22px;
+  font-size: 15px;
+}
+/* line 313, ../scss/kidssitter.scss */
+#modifier-annonce .annonce {
+  background: #fff;
+  padding: 10px;
+  border-bottom: 3px solid #dcdcda;
+}
+/* line 318, ../scss/kidssitter.scss */
+#modifier-annonce hr {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #c9c9c9;
+}
+/* line 326, ../scss/kidssitter.scss */
+#modifier-annonce .edit {
+  margin: 15px 30px;
+}
+/* line 329, ../scss/kidssitter.scss */
+#modifier-annonce .block {
+  background: #fff;
+  padding: 10px;
+  margin: 15px auto;
+}
+/* line 333, ../scss/kidssitter.scss */
+#modifier-annonce .block img {
+  float: left;
+  margin-right: 10px;
+}
+/* line 337, ../scss/kidssitter.scss */
+#modifier-annonce .block h1 {
+  font-size: 15px;
+  color: #4ba2c0;
+  font-weight: normal;
+}
+
+/* line 346, ../scss/kidssitter.scss */
+#messagerie .containing-element {
+  background: #f6f5f1;
+  padding: 20px 10px;
+  text-align: center;
+  text-shadow: none;
+  font-weight: normal;
+  text-align: center;
+}
+/* line 353, ../scss/kidssitter.scss */
+#messagerie .containing-element ul {
+  margin: 0px;
+  padding: 0px;
+}
+/* line 357, ../scss/kidssitter.scss */
+#messagerie .containing-element ul li {
+  display: inline-block;
+  margin-left: -5px;
+  padding: 0px;
+  border-top: 1px solid #cb4e5d;
+  border-bottom: 1px solid #cb4e5d;
+}
+/* line 365, ../scss/kidssitter.scss */
+#messagerie .containing-element ul li:first-child {
+  border-left: 1px solid #cb4e5d;
+  border-radius: 4px 0px 0px 4px;
+}
+/* line 369, ../scss/kidssitter.scss */
+#messagerie .containing-element ul li:last-child {
+  border-right: 1px solid #cb4e5d;
+  border-radius: 0px 4px 4px 0px;
+}
+/* line 373, ../scss/kidssitter.scss */
+#messagerie .containing-element ul li.active a {
+  background: #cb4e5d;
+  color: #fff;
+}
+/* line 377, ../scss/kidssitter.scss */
+#messagerie .containing-element ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #cb4e5d;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+}
+/* line 387, ../scss/kidssitter.scss */
+#messagerie .message {
+  background: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+/* line 391, ../scss/kidssitter.scss */
+#messagerie .message .author {
+  clear: both;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c9c9c9;
+}
+/* line 396, ../scss/kidssitter.scss */
+#messagerie .message .author h1 {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #4ba2c0 !important;
+}
+/* line 400, ../scss/kidssitter.scss */
+#messagerie .message .author h1 strong {
+  font-size: 13px;
+  display: block;
+  color: #000;
+  margin-bottom: 8px;
+}
+/* line 406, ../scss/kidssitter.scss */
+#messagerie .message .author h1 small {
+  display: block;
+  color: #414141;
+  font-weight: normal;
+  font-size: 13px;
+}
+/* line 413, ../scss/kidssitter.scss */
+#messagerie .message .author img {
+  float: left;
+  margin-right: 5px;
+}
+/* line 418, ../scss/kidssitter.scss */
+#messagerie .message .content {
+  font-size: 13px;
+}
+/* line 422, ../scss/kidssitter.scss */
+#messagerie .message.sent h1 {
+  color: #cb4e5d !important;
+}
+
+/* line 428, ../scss/kidssitter.scss */
+#fiche-parents .user {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 434, ../scss/kidssitter.scss */
+#fiche-parents .user img {
+  float: left;
+  margin-right: 5px;
+}
+/* line 438, ../scss/kidssitter.scss */
+#fiche-parents .user h1 {
+  color: #cb4e5d !important;
+  font-size: 18px;
+}
+/* line 441, ../scss/kidssitter.scss */
+#fiche-parents .user h1 strong {
+  display: block;
+  font-size: 15px;
+  color: #000;
+}
+/* line 447, ../scss/kidssitter.scss */
+#fiche-parents .user p {
+  display: block;
+  margin-top: 40px;
+}
+/* line 452, ../scss/kidssitter.scss */
+#fiche-parents h1.title {
+  color: #919191;
+  font-size: 15px;
+  text-align: center;
+}
+/* line 457, ../scss/kidssitter.scss */
+#fiche-parents ul.abonnement {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 461, ../scss/kidssitter.scss */
+#fiche-parents ul.abonnement li {
+  background: #fff;
+  padding: 10px;
+  color: #cb4e5d;
+}
+/* line 465, ../scss/kidssitter.scss */
+#fiche-parents ul.abonnement li:last-child {
+  padding: 0px;
+}
+/* line 468, ../scss/kidssitter.scss */
+#fiche-parents ul.abonnement li.premium a {
+  display: block;
+  background: #cb4e5d;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: none;
+}
+/* line 479, ../scss/kidssitter.scss */
+#fiche-parents ul.links {
+  list-style: none;
+  padding: 0px;
+  margin: 15px 0px;
+}
+/* line 483, ../scss/kidssitter.scss */
+#fiche-parents ul.links li {
+  background: #fff;
+  color: #cb4e5d;
+  margin-bottom: 1px;
+}
+/* line 487, ../scss/kidssitter.scss */
+#fiche-parents ul.links li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  text-shadow: none;
+  color: #58585a;
+  font-weight: normal;
+}
+
+/* line 500, ../scss/kidssitter.scss */
+#fiche-kid .user {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 506, ../scss/kidssitter.scss */
+#fiche-kid .user img {
+  float: left;
+  margin-right: 5px;
+}
+/* line 510, ../scss/kidssitter.scss */
+#fiche-kid .user h1 {
+  color: #4ba2c0 !important;
+  font-size: 18px;
+}
+/* line 513, ../scss/kidssitter.scss */
+#fiche-kid .user h1 strong {
+  display: block;
+  font-size: 15px;
+  color: #000;
+}
+/* line 519, ../scss/kidssitter.scss */
+#fiche-kid .user p {
+  display: block;
+  margin-top: 40px;
+}
+/* line 524, ../scss/kidssitter.scss */
+#fiche-kid h1.title {
+  color: #919191;
+  font-size: 15px;
+  text-align: center;
+}
+/* line 529, ../scss/kidssitter.scss */
+#fiche-kid ul.abonnement {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 533, ../scss/kidssitter.scss */
+#fiche-kid ul.abonnement li {
+  background: #fff;
+  padding: 10px;
+  color: #4ba2c0;
+}
+/* line 537, ../scss/kidssitter.scss */
+#fiche-kid ul.abonnement li:last-child {
+  padding: 0px;
+}
+/* line 540, ../scss/kidssitter.scss */
+#fiche-kid ul.abonnement li.premium a {
+  display: block;
+  background: #4ba2c0;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: none;
+}
+/* line 551, ../scss/kidssitter.scss */
+#fiche-kid ul.links {
+  list-style: none;
+  padding: 0px;
+  margin: 15px 0px;
+}
+/* line 555, ../scss/kidssitter.scss */
+#fiche-kid ul.links li {
+  background: #fff;
+  color: #cb4e5d;
+  margin-bottom: 1px;
+}
+/* line 559, ../scss/kidssitter.scss */
+#fiche-kid ul.links li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  text-shadow: none;
+  color: #58585a;
+  font-weight: normal;
+}
+
+/* line 572, ../scss/kidssitter.scss */
+#fiche .user {
+  position: relative;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 579, ../scss/kidssitter.scss */
+#fiche .user .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 583, ../scss/kidssitter.scss */
+#fiche .user img.premium {
+  position: absolute;
+  right: -10px;
+  top: -8px;
+}
+/* line 588, ../scss/kidssitter.scss */
+#fiche .user h1 {
+  color: #4ba2c0 !important;
+  font-size: 18px;
+}
+/* line 591, ../scss/kidssitter.scss */
+#fiche .user h1 strong {
+  display: block;
+  font-size: 15px;
+  color: #000;
+}
+/* line 596, ../scss/kidssitter.scss */
+#fiche .user h1 span {
+  display: block;
+  margin-top: 5px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #cb4e5d;
+  line-height: 12px;
+}
+/* line 607, ../scss/kidssitter.scss */
+#fiche .user.sitter .user h1 {
+  color: #cb4e5d !important;
+}
+/* line 612, ../scss/kidssitter.scss */
+#fiche .user p {
+  display: block;
+  margin-top: 40px;
+}
+/* line 616, ../scss/kidssitter.scss */
+#fiche .user .distance {
+  margin-top: 20px;
+}
+/* line 618, ../scss/kidssitter.scss */
+#fiche .user .distance .star {
+  display: inline-block;
+  padding: 7px;
+  background: #cb4e5d;
+  color: #fff;
+  text-shadow: none;
+  border-radius: 4px;
+}
+/* line 626, ../scss/kidssitter.scss */
+#fiche .user .distance .m {
+  border-radius: 4px;
+  padding: 7px;
+  display: inline-block;
+  background: #e6e6e6;
+}
+/* line 634, ../scss/kidssitter.scss */
+#fiche h1.title {
+  color: #919191;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 15px;
+}
+/* line 640, ../scss/kidssitter.scss */
+#fiche .annonce {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 647, ../scss/kidssitter.scss */
+#fiche .signalement {
+  display: block;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 20px auto;
+  width: 150px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}
+
+#fiche-sitter-profile .user {
+  position: relative;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 579, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 583, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user img.premium {
+  position: absolute;
+  right: -10px;
+  top: -8px;
+}
+/* line 588, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user h1 {
+  color: #4ba2c0 !important;
+  font-size: 18px;
+  margin-top:-2px;
+}
+/* line 591, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user h1 strong {
+  display: block;
+  font-size: 15px;
+  color: #000;
+}
+/* line 596, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user h1 span {
+  display: block;
+  margin-top: 4px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #cb4e5d;
+  line-height: 12px;
+}
+/* line 607, ../scss/kidssitter.scss */
+
+#fiche-sitter-profile .user.sitter .user h1 {
+  color: #cb4e5d !important;
+}
+/* line 612, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user p {
+  display: block;
+  margin-top: 40px;
+}
+/* line 616, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user .distance {
+  margin-top: 42px;
+}
+/* line 618, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user .distance .star {
+  display: inline-block;
+  padding: 7px;
+  background: #cb4e5d;
+  color: #fff;
+  text-shadow: none;
+  border-radius: 4px;
+}
+/* line 626, ../scss/kidssitter.scss */
+#fiche-sitter-profile .user .distance .m {
+  border-radius: 4px;
+  padding: 7px;
+  display: inline-block;
+  background: #e6e6e6;
+}
+/* line 634, ../scss/kidssitter.scss */
+#fiche-sitter-profile h1.title {
+  color: #919191;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 15px;
+}
+/* line 640, ../scss/kidssitter.scss */
+#fiche-sitter-profile .annonce {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 647, ../scss/kidssitter.scss */
+#fiche-sitter-profile .signalement {
+  display: block;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 20px auto;
+  width: 150px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+#fiche-sitter-contact .user {
+  position: relative;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 579, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 583, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user img.premium {
+  position: absolute;
+  right: -10px;
+  top: -8px;
+}
+/* line 588, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user h1 {
+  color: #4ba2c0 !important;
+  font-size: 18px;
+}
+/* line 591, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user h1 strong {
+  display: block;
+  font-size: 15px;
+  color: #000;
+}
+/* line 596, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user h1 span {
+  display: block;
+  margin-top: 5px;
+  font-weight: normal;
+  font-size: 13px;
+  color: #cb4e5d;
+  line-height: 12px;
+}
+/* line 607, ../scss/kidssitter.scss */
+
+#fiche-sitter-contact .user.sitter .user h1 {
+  color: #cb4e5d !important;
+}
+/* line 612, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user p {
+  display: block;
+  margin-top: 40px;
+}
+/* line 616, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user .distance {
+  margin-top: 20px;
+}
+/* line 618, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user .distance .star {
+  display: inline-block;
+  padding: 7px;
+  background: #cb4e5d;
+  color: #fff;
+  text-shadow: none;
+  border-radius: 4px;
+}
+/* line 626, ../scss/kidssitter.scss */
+#fiche-sitter-contact .user .distance .m {
+  border-radius: 4px;
+  padding: 7px;
+  display: inline-block;
+  background: #e6e6e6;
+}
+/* line 634, ../scss/kidssitter.scss */
+#fiche-sitter-contact h1.title {
+  color: #919191;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 15px;
+}
+/* line 640, ../scss/kidssitter.scss */
+#fiche-sitter-contact .annonce {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+}
+/* line 647, ../scss/kidssitter.scss */
+#fiche-sitter-contact .signalement {
+  display: block;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  font-size: 13px;
+  margin: 20px auto;
+  width: 150px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+}
+/* line 663, ../scss/kidssitter.scss */
+#recherche h1 {
+  font-size: 13px;
+  text-align: center;
+}
+/* line 667, ../scss/kidssitter.scss */
+#recherche ul.listing {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+/* line 671, ../scss/kidssitter.scss */
+#recherche ul.listing li {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #cdcdcd;
+}
+/* line 675, ../scss/kidssitter.scss */
+#recherche ul.listing li:first-child {
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: none;
+}
+/* line 679, ../scss/kidssitter.scss */
+#recherche ul.listing li:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+/* line 684, ../scss/kidssitter.scss */
+#recherche .containing-element .ui-slider-switch {
+  width: 100%;
+}
+
+
+#recherche-comment h1 {
+  font-size: 13px;
+  text-align: center;
+}
+/* line 667, ../scss/kidssitter.scss */
+#recherche-comment ul.listing {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+/* line 671, ../scss/kidssitter.scss */
+#recherche-comment ul.listing li {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #cdcdcd;
+}
+/* line 675, ../scss/kidssitter.scss */
+#recherche-comment ul.listing li:first-child {
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: none;
+}
+/* line 679, ../scss/kidssitter.scss */
+#recherche-comment ul.listing li:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+/* line 684, ../scss/kidssitter.scss */
+#recherche-comment .containing-element .ui-slider-switch {
+  width: 100%;
+}
+
+#recherche-kid h1 {
+  font-size: 13px;
+  text-align: center;
+}
+/* line 667, ../scss/kidssitter.scss */
+#recherche-kid ul.listing {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+/* line 671, ../scss/kidssitter.scss */
+#recherche-kid ul.listing li {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #cdcdcd;
+}
+/* line 675, ../scss/kidssitter.scss */
+#recherche-kid ul.listing li:first-child {
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: none;
+}
+/* line 679, ../scss/kidssitter.scss */
+#recherche-kid ul.listing li:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+/* line 684, ../scss/kidssitter.scss */
+#recherche-kid .containing-element .ui-slider-switch {
+  width: 100%;
+}
+/* line 688, ../scss/kidssitter.scss */
+#listing-kid ul.listing {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 692, ../scss/kidssitter.scss */
+#listing-kid ul.listing li {
+  position: relative;
+  background: #fff;
+  padding: 20px 10px;
+  height: 65px;
+}
+/* line 697, ../scss/kidssitter.scss */
+#listing-kid ul.listing li:not(:last-child) {
+  border-bottom: 1px solid #acacaa;
+  height: auto;
+}
+/* line 701, ../scss/kidssitter.scss */
+#listing-kid ul.listing li.urgence {
+  border-bottom: 2px solid #cb4e5d;
+  border-top: 2px solid #cb4e5d;
+}
+/* line 705, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a {
+  text-decoration: none;
+  outline: none;
+}
+/* line 708, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a h1 {
+  color: #4ba2c0 !important;
+  font-size: 13px;
+}
+/* line 712, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a strong {
+  display: block;
+  font-size: 12px;
+  color: #000;
+}
+/* line 717, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 721, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a img.float {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+/* line 726, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a .distance {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+/* line 734, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a .arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+}
+/* line 739, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a .avis {
+  margin-top: 5px;
+}
+/* line 742, ../scss/kidssitter.scss */
+#listing-kid ul.listing li a b {
+  color: #727272;
+}
+/* line 749, ../scss/kidssitter.scss */
+#listing-kid.kid h1 {
+  color: #cb4e5d !important;
+}
+
+
+
+
+
+#listing-parents ul.listing {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 692, ../scss/kidssitter.scss */
+#listing-parents ul.listing li {
+  position: relative;
+  background: #fff;
+  padding: 35px 10px;
+  height: 65px;
+}
+/* line 697, ../scss/kidssitter.scss */
+#listing-parents ul.listing li:not(:last-child) {
+  border-bottom: 1px solid #acacaa;
+  height: auto;
+}
+/* line 701, ../scss/kidssitter.scss */
+#listing-parents ul.listing li.urgence {
+  border-bottom: 2px solid #cb4e5d;
+  border-top: 2px solid #cb4e5d;
+}
+/* line 705, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a {
+  text-decoration: none;
+  outline: none;
+}
+/* line 708, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a h1 {
+  color: #4ba2c0 !important;
+  font-size: 13px;
+}
+/* line 712, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a strong {
+  display: block;
+  font-size: 12px;
+  color: #000;
+}
+/* line 717, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 721, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a img.float {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+/* line 726, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a .distance {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+/* line 734, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a .arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+}
+/* line 739, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a .avis {
+  margin-top: 5px;
+}
+/* line 742, ../scss/kidssitter.scss */
+#listing-parents ul.listing li a b {
+  color: #727272;
+}
+/* line 749, ../scss/kidssitter.scss */
+#listing-parents.kid h1 {
+  color: #cb4e5d !important;
+}
+
+
+
+
+
+#listing-comment ul.listing {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 692, ../scss/kidssitter.scss */
+#listing-comment ul.listing li {
+  position: relative;
+  background: #fff;
+  padding: 35px 10px;
+  height: 65px;
+}
+/* line 697, ../scss/kidssitter.scss */
+#listing-comment ul.listing li:not(:last-child) {
+  border-bottom: 1px solid #acacaa;
+  height: auto;
+}
+/* line 701, ../scss/kidssitter.scss */
+#listing-comment ul.listing li.urgence {
+  border-bottom: 2px solid #cb4e5d;
+  border-top: 2px solid #cb4e5d;
+}
+/* line 705, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a {
+  text-decoration: none;
+  outline: none;
+}
+/* line 708, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a h1 {
+  color: #4ba2c0 !important;
+  font-size: 13px;
+}
+/* line 712, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a strong {
+  display: block;
+  font-size: 12px;
+  color: #000;
+}
+/* line 717, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 721, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a img.float {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+/* line 726, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a .distance {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+/* line 734, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a .arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+}
+/* line 739, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a .avis {
+  margin-top: 5px;
+}
+/* line 742, ../scss/kidssitter.scss */
+#listing-comment ul.listing li a b {
+  color: #727272;
+}
+/* line 749, ../scss/kidssitter.scss */
+#listing-comment.kid h1 {
+  color: #cb4e5d !important;
+}
+
+
+/* line 756, ../scss/kidssitter.scss */
+#inscription-kid .ui-panel-content-wrap.ui-body-c {
+  background: url("../images/background/connexion.png") !important;
+  background-size: cover !important;
+}
+/* line 760, ../scss/kidssitter.scss */
+#inscription-kid h1.title {
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 0px 0px 5px #000;
+  text-align: center;
+}
+/* line 766, ../scss/kidssitter.scss */
+#inscription-kid h2.title {
+  font-size: 15px;
+  color: #fff;
+  text-shadow: 0px 0px 5px #000;
+  text-align: center;
+}
+
+#inscription-parent .ui-panel-content-wrap.ui-body-c {
+  background: url("../images/background/connexion.png") !important;
+  background-size: cover !important;
+}
+/* line 760, ../scss/kidssitter.scss */
+#inscription-parent h1.title {
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 0px 0px 5px #000;
+  text-align: center;
+}
+/* line 766, ../scss/kidssitter.scss */
+#inscription-parent h2.title {
+  font-size: 15px;
+  color: #fff;
+  text-shadow: 0px 0px 5px #000;
+  text-align: center;
+}
+.custom-nav .ui-icon-shadow{ background:none;}
+.nav-icon-img{ float: left; margin-left: 6%; margin-top: 3%; max-width: 27px; }
+.nav-icon-img-02{ float: left; margin-left: 6%; margin-top: 4.5%; max-width: 27px; }
+.custom-logo .ui-content{ padding:0;}
+
+
+.spacer{ font-size:0; line-height:0; clear:both;}
+
+.smile-icon{ padding:0; margin:0;}
+.smile-icon li{ list-style:none; float:left; width:auto;}
+.smile-icon li img{ max-width:13px; margin-right:2px;}
+.hour-title{ color:#727272;}
+
+.gradiant-button{background: #464951 !important; /* Old browsers */
+color:#000 !important;
+background: -moz-linear-gradient(top, #464951 0%, #fbfbfb 1%, #f5f5f5 4%, #ededee 17%, #d2d3d5 51%, #c0c1c4 52%, #c0c1c4 100%) !important; /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#464951), color-stop(1%,#fbfbfb), color-stop(4%,#f5f5f5), color-stop(17%,#ededee), color-stop(51%,#d2d3d5), color-stop(52%,#c0c1c4), color-stop(100%,#c0c1c4)) !important; /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #464951 0%,#fbfbfb 1%,#f5f5f5 4%,#ededee 17%,#d2d3d5 51%,#c0c1c4 52%,#c0c1c4 100%) !important; /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #464951 0%,#fbfbfb 1%,#f5f5f5 4%,#ededee 17%,#d2d3d5 51%,#c0c1c4 52%,#c0c1c4 100%) !important; /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #464951 0%,#fbfbfb 1%,#f5f5f5 4%,#ededee 17%,#d2d3d5 51%,#c0c1c4 52%,#c0c1c4 100%) !important; /* IE10+ */
+background: linear-gradient(to bottom, #464951 0%,#fbfbfb 1%,#f5f5f5 4%,#ededee 17%,#d2d3d5 51%,#c0c1c4 52%,#c0c1c4 100%) !important; /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#464951', endColorstr='#c0c1c4',GradientType=0 ) !important; /* IE6-9 */
+
+  text-shadow: none !important;
+  border: 5px solid #464951 !important;
+}
+.gradiant-button:hover{ opacity:0.8;}
+
+.cancel-button{
+background: #bebebe; /* Old browsers */
+background: -moz-linear-gradient(top, #bebebe 0%, #868686 1%, #6a6a6a 3%, #606060 16%, #4d4d4d 35%, #444444 48%, #393939 49%, #2b2b2b 81%, #1d1d1d 97%, #18181a 99%, #1d1e21 100%) !important;; /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bebebe), color-stop(1%,#868686), color-stop(3%,#6a6a6a), color-stop(16%,#606060), color-stop(35%,#4d4d4d), color-stop(48%,#444444), color-stop(49%,#393939), color-stop(81%,#2b2b2b), color-stop(97%,#1d1d1d), color-stop(99%,#18181a), color-stop(100%,#1d1e21)) !important;; /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #bebebe 0%,#868686 1%,#6a6a6a 3%,#606060 16%,#4d4d4d 35%,#444444 48%,#393939 49%,#2b2b2b 81%,#1d1d1d 97%,#18181a 99%,#1d1e21 100%) !important;; /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #bebebe 0%,#868686 1%,#6a6a6a 3%,#606060 16%,#4d4d4d 35%,#444444 48%,#393939 49%,#2b2b2b 81%,#1d1d1d 97%,#18181a 99%,#1d1e21 100%) !important;; /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #bebebe 0%,#868686 1%,#6a6a6a 3%,#606060 16%,#4d4d4d 35%,#444444 48%,#393939 49%,#2b2b2b 81%,#1d1d1d 97%,#18181a 99%,#1d1e21 100%) !important;; /* IE10+ */
+background: linear-gradient(to bottom, #bebebe 0%,#868686 1%,#6a6a6a 3%,#606060 16%,#4d4d4d 35%,#444444 48%,#393939 49%,#2b2b2b 81%,#1d1d1d 97%,#18181a 99%,#1d1e21 100%) !important;; /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bebebe', endColorstr='#1d1e21',GradientType=0 ) !important;; /* IE6-9 */
+
+  text-shadow: none !important;
+  border: 4px solid #464951 !important;
+  color:#fff !important;
+  margin-top:35px !important;
+	
+	}
+.cancel-button:hover{ opacity:0.8;}
+.photo span{ text-align:center !important; display:block; color:#9b9b9b;}
+
+.table-de-title{ background:url(../images/date-icon.png) no-repeat 0 0; padding:0 0 0 47px; font-size:21px; line-height:30px;}
+
+.chart th{ font-size:11px; border-right:1px solid #d0cece; border-bottom:1px solid #d0cece; border-top:1px solid #d0cece; line-height:35px; background-color:#fff;}
+.chart td{ border-right:1px solid #d0cece; border-bottom:1px solid #d0cece;  font-size:11px; padding:7px 0 7px 5px; text-align:center; vertical-align:middle;}
+.chart td img{}
+.chart tr{ background-color:#fff;}
+.chart td.left-border{ border-left:1px solid #d0cece; text-align:left;}
+.chart th.left-border{ border-left:1px solid #d0cece;}
+
+.chart .odd{ background-color:#f9f9f9;}
+
+
+.jqm-navmenu-link.main-menu-link{right:5px; left:inherit; background:none; border:none; top:13px !important; left:7px !important; width:18px; height:15px;  box-shadow:none !important;}
+.jqm-navmenu-link.main-menu-link .ui-btn-inner{ background:none; border:none; box-shadow:none; width:22px; height:18px; border-radius:0; background:url(../images/menu-click-icon.png) no-repeat; box-shadow:none;}
+.jqm-navmenu-link.main-menu-link .ui-icon{ background:none; box-shadow:none; border:none;}
+
+
+.back-link{ border:0 !important; background:none !important; box-shadow:none !important; top:9px !important;}
+.back-link .ui-btn-inner{ background:none; border:none !important; box-shadow:none;  border-radius:0 !important; box-shadow:none; background:url(../images/back-button.png) no-repeat !important; width:25px; height:25px !important;}
+.back-link .ui-icon-shadow{ background:none; box-shadow:none; border:none;}
+
+
+.ui-btn-corner-all{ border-radius: 0.4em !important;}
+.ui-corner-all{ border-radius: 0.4em !important;}
+
+.footer-width{ width:93% !important;}
+
+.drag-round .ui-btn-corner-all{ border-radius: 1em !important;}
+
+
+
+.drag-slider-01 .ui-slider-track{ height:2px !important; margin-top:6px;}
+.drag-slider-01 .ui-btn-active{ background:#bc3c4f !important;}
+.rating {
+  width: 84px; height: 15px;
+  display: inline-block;
+  background: url('../images/sprite.png') no-repeat;
+}
+
+.rating.r0 { background-position: 0 -241px; }
+.rating.r1 { background-position: 0 -256px; }
+.rating.r2 { background-position: 0 -271px; }
+.rating.r3 { background-position: 0 -286px; }
+.rating.r4 { background-position: 0 -301px; }
+.rating.r5 { background-position: 0 -316px; }
+
+td.check {
+  background: url('../images/check.png') no-repeat center center;
+}
+
+.logout{display:none};
+
+.mesperent-fevoris{}
+.mesperent-fevoris p{ padding:0; margin:5px 0 0 0; font-size:12px; color:#000; font-weight:normal;}
+.rating-pan{ padding:5px 0 10px; overflow:hidden;}
+.rating-pan span{ display: block; float: left; font-size: 14px; line-height: 16px; padding: 0 10px 0 0;}
+
+.rating-star-pan{ clear:both; padding-bottom:2px;}
+.rating-star-pan ul li{ float:left; background:url(../images/check-empty.png) no-repeat; background-size:100%; margin-right:5px; width:17px; height:25px; list-style:none;}
+.rating-star-pan ul li.active{ background:url(../images/check-done.png) no-repeat; background-size:100%;}
+
+.fa.fa-star.favourite {
+    color: gold;
+}
+
+/*-------------31/10/2014---------------------*/
+
+#listing-fav ul.listing {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 692, ../scss/kidssitter.scss */
+#listing-fav ul.listing li {
+  position: relative;
+  background: #fff;
+  padding: 35px 10px;
+  height: auto;
+}
+/* line 697, ../scss/kidssitter.scss */
+#listing-fav ul.listing li:not(:last-child) {
+  border-bottom: 1px solid #acacaa;
+  height: auto;
+}
+/* line 701, ../scss/kidssitter.scss */
+#listing-fav ul.listing li.urgence {
+  border-bottom: 2px solid #cb4e5d;
+  border-top: 2px solid #cb4e5d;
+}
+/* line 705, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a {
+  text-decoration: none;
+  outline: none;
+}
+/* line 708, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a h1 {
+  color: #4ba2c0 !important;
+  font-size: 13px;
+}
+/* line 712, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a strong {
+  display: block;
+  font-size: 12px;
+  color: #000;
+}
+/* line 717, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a .photo {
+  float: left;
+  margin-right: 5px;
+}
+/* line 721, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a img.float {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+/* line 726, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a .distance {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #9b9b9b;
+}
+/* line 734, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a .arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+}
+/* line 739, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a .avis {
+  margin-top: 5px;
+}
+/* line 742, ../scss/kidssitter.scss */
+#listing-fav ul.listing li a b {
+  color: #727272;
+}
+/* line 749, ../scss/kidssitter.scss */
+#listing-fav.kid h1 {
+  color: #cb4e5d !important;
+}
+
+#mes-infants ul.listing {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+/* line 692, ../scss/kidssitter.scss */
+#mes-infants ul.listing li {
+  position: relative;
+  background: #fff;
+  padding: 35px 10px;
+  height: auto;
+}
+/* line 697, ../scss/kidssitter.scss */
+#mes-infants ul.listing li:not(:last-child) {
+  border-bottom: 1px solid #acacaa;
+  height: auto;
+}
+/* line 712, ../scss/kidssitter.scss */
+#mes-infants ul.listing li strong {
+  font-size: 12px;
+  color: #000;
+}
+.mesinfname{
+  color:#4ba2c0 !important
+}
+
+#messagerie-list .containing-element {
+  background: #f6f5f1;
+  padding: 20px 10px;
+  text-align: center;
+  text-shadow: none;
+  font-weight: normal;
+  text-align: center;
+}
+/* line 353, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul {
+  margin: 0px;
+  padding: 0px;
+}
+/* line 357, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li {
+  display: inline-block;
+  margin-left: -5px;
+  padding: 0px;
+  border-top: 1px solid #cb4e5d;
+  border-bottom: 1px solid #cb4e5d;
+}
+/* line 365, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li:first-child {
+  border-left: 1px solid #cb4e5d;
+  border-radius: 4px 0px 0px 4px;
+}
+/* line 369, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li:last-child {
+  border-right: 1px solid #cb4e5d;
+  border-radius: 0px 4px 4px 0px;
+}
+/* line 373, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li.active a {
+  background: #cb4e5d;
+  color: #fff;
+}
+/* line 377, ../scss/kidssitter.scss */
+#messagerie-list .containing-element ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #cb4e5d;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+}
+/* line 387, ../scss/kidssitter.scss */
+#messagerie-list .message {
+  background: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+/* line 391, ../scss/kidssitter.scss */
+#messagerie-list .message .author {
+  clear: both;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c9c9c9;
+}
+/* line 396, ../scss/kidssitter.scss */
+#messagerie-list .message .author h1 {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #4ba2c0 !important;
+}
+/* line 400, ../scss/kidssitter.scss */
+#messagerie-list .message .author h1 strong {
+  font-size: 13px;
+  display: block;
+  color: #000;
+  margin-bottom: 8px;
+}
+/* line 406, ../scss/kidssitter.scss */
+#messagerie-list .message .author h1 small {
+  display: block;
+  color: #414141;
+  font-weight: normal;
+  font-size: 13px;
+}
+/* line 413, ../scss/kidssitter.scss */
+#messagerie-list .message .author img {
+  float: left;
+  margin-right: 5px;
+}
+/* line 418, ../scss/kidssitter.scss */
+#messagerie-list .message .content {
+  font-size: 13px;
+}
+/* line 422, ../scss/kidssitter.scss */
+#messagerie-list .message.sent h1 {
+  color: #cb4e5d !important;
+}
+.profile-menu-icon{
+	float: left;
+    margin: 9px 9px 0;
+    width: auto;
+}
+
+.location-icon{ float:left; max-width:16%; margin-right:1%;}
+.location-icon img{ max-width:100%;}
+.location-search{ overflow:hidden; padding-right:0 !important;}
+.location-input{ float:left; width:83%;}
+
+.location-input .ui-icon-search, .ui-icon-searchfield:after{ background:none !important;}
+.location-input .ui-input-search{ padding-left:15px !important;}
+
+.sos{display:none; }
+
+.ui-datebox-container {
+    z-index: 500000000 !important;
+}
+
+.error-msg{
+color:red;text-shadow:none;display:none;
+}
+
+a{
+text-decoration:none;
+}
+.ifloggedin{
+display:none;
+}
+#messagerie .containing-element ul li.active.kidssitter a {
+  background: #4ba2c0;
+  color: #fff;
+}
+
+#messagerie .containing-element ul li.kidssitter a {
+   color:#4ba2c0;
+}
+#messagerie .containing-element ul li.kidssitter {
+    border-bottom: 1px solid #4ba2c0;
+    border-top: 1px solid #4ba2c0;
+    display: inline-block;
+    margin-left: -5px;
+    padding: 0;
+}
+
+#messagerie .containing-element ul li:last-child.kidssitter {
+    border-radius: 0 4px 4px 0;
+    border-right: 1px solid #4ba2c0;
+}
+
+#messagerie .containing-element ul li:first-child.kidssitter {
+    border-left: 1px solid #4ba2c0;
+    border-radius: 4px 0 0 4px;
+}
