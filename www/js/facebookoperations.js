@@ -62,6 +62,7 @@ function loginReqestToServer(fb)
 				});
 				if(data.type=="user_sitter")
 				{
+					regNotification();
 					$('#near-kid li').remove();
 					if(data.result_arr != null)
 					{

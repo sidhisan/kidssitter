@@ -79,6 +79,9 @@
 		restrictMenuByLogin();
 	});
 	updateLastLogedin();
+	
+	$('#fiche-parents,#fiche-kid').find('.abonnement').find('.premium').css('display','none');
+	$('#fiche-parents,#fiche-kid').find('.abonnement > div').css('display','none');
 	});
 
 //logout function-----------------------------------------
@@ -94,6 +97,7 @@ function logout()
 	var Backlen=history.length-1; 
 	history.go(-Backlen);
 	$('.sos').css('display','none');
+	$('.sos-alert').css('display','none');
 	setTimeout(function(){$.mobile.changePage('#home',{reverse: false, changeHash: false,transition:'flip'})}, 1000);
 	
 	
@@ -465,6 +469,8 @@ function login_check()
 					});
 					if(data.type=="user_sitter")
 					{
+						$('a[class=search]').text('Trouver un parent');
+						regNotification();
 						$('#near-kid li').remove();
 						if(data.result_arr != null)
 						{
@@ -523,12 +529,14 @@ function login_check()
 						
 							$("#kgeo").geocomplete("find",data.user_lat);
 							$('#kgeo').trigger('geocode');
+							$('.sos-alert').css('display','block');
 							//alert("geoloc");
 						$.mobile.hidePageLoadingMsg();					
 						$.mobile.changePage("#listing-parents",{transition:"flip"});
 						}
 						else
 						{
+							$('a[class=search]').text('Trouver un kidssitter');
 							$('#near-parent li').remove();
 							if(data.result_arr != null)
 							{
@@ -983,10 +991,60 @@ function offeres_nav()
 			var distance=$("input[name=gp_distance]").val();
 			var language=$("input[name=gp_language]").val();
 			var pdata=[];
+			var permis_conduire=0;
+			var cuisine=0;
+			var secours=0;
+			var animation=0;
+			var aide_devoir=0;
+			var menage=0;
+			var garde_partage=0;
+			var handicap=0;
+			var garde_animal=0;
+			var formation_bafa=0;
 			$('input:checkbox[name="planning[]"]:checked').each(function() 
 			{
 			   pdata.push($(this).val());
 			});
+			if($('input:checkbox[name="permis_conduire"]').is(':checked'))
+			{
+				permis_conduire=1;
+			}
+			if($('input:checkbox[name="cuisine"]').is(':checked'))
+			{
+				cuisine=1;
+			}
+			if($('input:checkbox[name="secours"]').is(':checked'))
+			{
+				secours=1;
+			}
+			if($('input:checkbox[name="animation"]').is(':checked'))
+			{
+				animation=1;
+			}
+			if($('input:checkbox[name="aide_devoir"]').is(':checked'))
+			{
+				aide_devoir=1;
+			}
+			if($('input:checkbox[name="menage"]').is(':checked'))
+			{
+				menage=1;
+			}
+			if($('input:checkbox[name="garde_partage"]').is(':checked'))
+			{
+				garde_partage=1;
+			}
+			if($('input:checkbox[name="handicap"]').is(':checked'))
+			{
+				handicap=1;
+			}
+			if($('input:checkbox[name="garde_animal"]').is(':checked'))
+			{
+				garde_animal=1;
+			}
+			if($('input:checkbox[name="formation_bafa"]').is(':checked'))
+			{
+				formation_bafa=1;
+			}
 		}
 		else
 		{
@@ -999,7 +1057,7 @@ function offeres_nav()
 		$.ajax({
 
               url: "http://codeuridea.net/kidssitter/search/sitter-app",
-              data:{'gp_education':edu,'gp_type':type,'gp_address':address,'gp_lat':lat,'gp_lng':lng,'gp_language':language,'gp_distance':distance,'p_gender':gender,'planning':pdata},
+              data:{'gp_education':edu,'gp_type':type,'gp_address':address,'gp_lat':lat,'gp_lng':lng,'gp_language':language,'gp_distance':distance,'p_gender':gender,'planning':pdata,'permis_conduire':permis_conduire,'cuisine':cuisine,'animation':animation,'aide_devoir':aide_devoir,'menage':menage,'garde_partage':garde_partage,'handicap':handicap,'garde_animal':garde_animal,'formation_bafa':formation_bafa},
               dataType: 'json',
               type: 'GET',
               crossDomain: true,
@@ -1910,18 +1968,22 @@ function view_my_profile_parent()
 			if(diffDays<=0)
 			{
 				premium="Premium";
-				$('#fiche-parents').find('.abonnement').css('display','none');
+				$('#fiche-parents').find('.abonnement').find('.premium').css('display','none');
+			    $('#fiche-parents').find('.abonnement > div').first().css('display','block');
+
 			}
 			else
 			{
 				premium="Gratuit ";
-				$('#fiche-parents').find('.abonnement').css('display','block');
+				$('#fiche-parents').find('.abonnement > .premium').css('display','block');
+			    $('#fiche-parents').find('.abonnement > div').last().css('display','block');
 			}
 		}
 		else
 		{
 			premium="Gratuit ";
-			$('#fiche-parents').find('.abonnement').css('display','block');
+			$('#fiche-parents').find('.abonnement > .premium').css('display','block');
+			$('#fiche-parents').find('.abonnement > div').last().css('display','block');
 		}
 		var htmls='<a  href="#par-ppedit-image" data-rel="popup" data-transition="pop" class="signalement edit-image">'+
 		'<img src="'+userdetails.src+'" height="80" alt=""></a><h1>'+userdetails.firstname+' '+lname+'<strong> '+type+''+userdetails.locality+'</strong></h1><p>'+kids+'<br/>'+phone+'<br/>'+window.localStorage['username']+'<br/>'+skype+'</p>';
@@ -2049,17 +2111,20 @@ function view_my_profile_sitter()
 		if(userdetails.certified == true)
 		{
 			certified="certified";
-			$('#fiche-kid').find('.abonnement').css('display','none');
+			$('#fiche-kid').find('.abonnement > .premium').css('display','none');
+			$('#fiche-kid').find('.abonnement > div').first().css('display','block');
 		}
 		if(userdetails.verified == true)
 		{
 			certified="Verified";
-			$('#fiche-kid').find('.abonnement').css('display','block');
+			$('#fiche-kid').find('.abonnement > .premium').css('display','block');
+			$('#fiche-kid').find('.abonnement > div').first().css('display','block');
 		}
 		if(userdetails.certified == false && userdetails.verified == false)
 		{
 			certified="Gratuit ";
-			$('#fiche-kid').find('.abonnement').css('display','block');
+			$('#fiche-kid').find('.abonnement > .premium').css('display','block');
+			$('#fiche-kid').find('.abonnement > div').last().css('display','block');
 		}
 		var htmls='<a  href="#kid-ppedit-image" data-rel="popup" data-transition="pop" class="signalement edit-image">'+
 		'<img src="'+userdetails.src+'" height="80" alt=""></a><h1>'+userdetails.firstname+' '+lname+'<strong> '+type+''+userdetails.locality+'</strong></h1><p>'+kids+'<br/>'+phone+'<br/>'+window.localStorage['username']+'<br/>'+skype+'</p>';
@@ -2264,6 +2329,7 @@ var destinationType;
 document.addEventListener("deviceready",function(){
 	pictureSource=navigator.camera.PictureSourceType; 
 	destinationType=navigator.camera.DestinationType;
+	regNotification();
 },false);
 function underDevMsg(event)
 {
@@ -3179,9 +3245,16 @@ function restrictMenuByLogin()
 		}else{
 		 $(".ifloggedin").css('display','block');
 		}
-		if(window.localStorage['user_type'] != "user_parent")
+		if(window.localStorage['user_type'] == "user_parent")
 		{
-			$(".sos").css('display','none');
+			$(".sos").css('display','block');
+			$('.sos-alert').css('display','none');
+
+		}
+		else if(window.localStorage['user_type'] == 'user_sitter')
+		{
+	       $('.sos').css('display','none');
+		   $('.sos-alert').css('display','block');
 		}
 	},1000);
 }
@@ -3275,7 +3348,10 @@ function view_sos_form()
 	var user_data = JSON.parse(window.localStorage['userdata']);
 	if(window.localStorage['user_type'] == 'user_parent' && user_data.subscription!=null)
 	{
-		if(user_data.subscription.isEnabled == true)
+		var userdetails=[];
+		userdetails=JSON.parse(window.localStorage['userdata']);
+		var diffDays=get_date_diff(userdetails.premium.endDate.date,userdetails.server);
+		if(diffDays<=0)//if(user_data.subscription.isEnabled == true)
 		{
 			$.mobile.changePage('#sos',{'transition':'flip'});
 		}
@@ -3385,9 +3461,9 @@ function view_search_page()
 
 //swipe menubar
 
-$( document ).on( "pageinit","[data-role=page]", function() {
+$( document ).on( "pageshow","[data-role=page]", function() {
 
-    $( document ).on( "swipeleft swiperight","page", function( e ) {
+   /* $( document ).on( "swipeleft swiperight","page", function( e ) {
         // We check if there is no open panel on the page because otherwise
         // a swipe to close the left panel would also open the right panel (and v.v.).
         // We do this by checking the data that the framework stores on the page element (panel: open).
@@ -3408,7 +3484,162 @@ $( document ).on( "pageinit","[data-role=page]", function() {
 
         if ($.mobile.activePage.find('#right-panel').hasClass('ui-panel-closed') &&  e.type === "swiperight") {
             $( "#left-panel" ).panel( "open" );           
-        } */
-    });
+        } 
+    });*/
+	$(document).on('swiperight',function(e)
+	{
+		//alert('right');
+		$.mobile.activePage.find('[data-role=panel]').panel("open");
+	});
+	$(document).on('swipeleft',function(e)
+	{
+		//alert('left');
+		$.mobile.activePage.find('[data-role=panel]').panel("close");
+	});
 });
 
+//view sos alert
+function view_sos_alert()
+{
+			var user_data = JSON.parse(window.localStorage['userdata']);
+			$.ajax({
+				type: "POST",
+				url:"http://codeuridea.net/kidssitter/get-alert/"+user_data.id,
+				dataType: "json",
+				success:function(data)
+				{
+					$('#alert-list').html('');
+					var html='';
+					if(data.success == true)
+					{
+						
+							$.each(data.result,function(index,value)
+							{
+							
+								var date1 = value.date.date;
+								var dat = date1.replace(/-/g,'/');
+								var date2 = new Date(dat);
+								var date3=value.time.date;
+								var dat1 = date3.replace(/-/g,'/');
+								var date4= new Date(dat1);
+								html+='<div class="message"><div class="author"><img src="'+value.src+'" height="80" alt=""><h1>'+value.sender+'<strong><a href="#"> Location: '+value.location+'</a></strong><small> Date: '+date2.getDate()+'/'+date2.getMonth()+'/'+date2.getYear()+'</small><small> Time :'+date4.getHours()+':'+date4.getMinutes()+'</small></h1></div></div>';
+								
+							
+							});
+					}
+					else
+					{
+						html="<div class='message'><h4 style='text-align:center'>No result found</h4></div>"
+					}
+												$('#alert-list').html(html);
+
+					$.mobile.changePage('#sos-alerts',{transition:'flip'});
+				}
+			});
+}
+
+
+
+//notification
+
+function regNotification()
+{
+	pushNotification = window.plugins.pushNotification;
+	if(typeof window.localStorage['user_type'] != "undefined" && window.localStorage['user_type'] == 'user_sitter' && typeof window.localStorage['loggedin'] != "undefined" && typeof window.localStorage['loggedin'] != '1')
+		if ( device.platform == 'android' || device.platform == 'Android'){
+			pushNotification.register(
+			successHandler,
+			errorHandler,
+			{
+				"senderID":"147737371914",
+				"ecb":"onNotification"
+			});
+		}else {
+			pushNotification.register(
+			successHandler,
+			errorHandler,
+			{
+				"badge":"true",
+				"sound":"true",
+				"alert":"true",
+				"ecb":"onNotificationAPN"
+			});
+		}
+}
+
+function successHandler (result) {
+    //alert('result = ' + result);
+}
+
+function errorHandler (error) {
+    //alert('error = ' + error);
+}
+
+function onNotificationAPN (event) {
+    if ( event.alert )
+    {
+        navigator.notification.alert(event.alert);
+    }
+    if ( event.sound )
+    {
+        var snd = new Media(event.sound);
+        snd.play();
+    }
+    if ( event.badge )
+    {
+        pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+    }
+}
+function onNotification(e) {
+	var user_data=JSON.parse(window.localStorage['userdata']);
+	switch( e.event )
+	{
+		case 'registered':
+			if ( e.regid.length > 0 )
+			{
+				var datasend = new Object();
+				datasend.regid = e.regid;
+				window.localStorage['gcmid'] = datasend.regid;
+				datasend.userid = user_data.id;
+				datasend.devicetype = device.platform;
+				//alert(JSON.stringify(datasend));
+				$.ajax({
+					type: "POST",
+					url: "http://codeuridea.net/kidssitter/set-device",
+					data:datasend,
+					dataType: "json",
+					success: function(data)
+					{
+						//alert("dev reg+"+JSON.stringify(data)+"+");
+					}
+				});
+			}//1154
+		break;
+		case 'message':
+		  // this is the actual push notification. its format depends on the data model from the push server
+			if(navigator.notification) {
+			   navigator.notification.alert(e.message, function(){
+				$.ajax({
+					type: "POST",
+					url: "http://codeuridea.net/kidssitter/read-alert/"+user_data.id,
+					dataType: "json",
+					success: function(data)
+					{
+						regNotification();
+					}
+				});
+			   }, "Kids-sitter SOS Notification", 'Close');
+			}else{
+			   alert("Kids-sitter SOS Notification:" + e.message);
+			}
+		break;
+
+		case 'error':
+		  //alert('GCM error = '+e.msg);
+		break;
+
+		default:
+		  //alert('An unknown GCM event has occurred');
+		  break;
+	}
+}
